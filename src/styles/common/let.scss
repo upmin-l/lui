@@ -1,0 +1,104 @@
+/*主颜色*/
+$-default-: #fff;
+$-Primary-: #2d8cf0;
+$-succeed-: #19be6b;
+$-subordination-: #3f51b5;
+$-error-: #f47983;
+$-warning-: #ff9900;
+$-black-: #1e1e1e;
+$-dead-: #314158;
+$-default-font-: #7f8280;
+
+/*button 状态 颜色*/
+$-button-default-color: $-default-;
+$-button-Primary-color: $-Primary-;
+$-button-success-color: $-succeed-;
+$-button-subordination-color: $-subordination-;
+$-button-error-color: $-error-;
+$-button-warning-color: $-warning-;
+$-button-black-color: $-black-;
+$-button-dead-color: $-dead-;
+
+/*button border */
+/* color*/
+$-color-primary: #409EFF !default;
+$-color-default: #FFFFFF !default;
+$-color-black: #000000 !default;
+$-color-success: #67C23A !default;
+$-color-warning: #E6A23C !default;
+$-color-danger: #F56C6C !default;
+$-color-info: #DCDFE6 !default;
+$-color-subordination: #5a3cc4 !default;
+
+/*hover*/
+$-hover-color-button: mix($-button-default-color, $-button-default-color, 10%) !default;
+$-hover-color-primary: mix($-button-default-color, $-button-Primary-color, 30%) !default;
+$-hover-color-success: mix($-button-default-color, $-button-success-color, 30%) !default;
+$-hover-color-subordination: mix($-button-default-color, $-button-subordination-color, 30%) !default;
+$-hover-color-error: mix($-button-default-color, $-button-error-color, 30%) !default;
+$-hover-color-warning: mix($-button-default-color, $-button-warning-color, 30%) !default;
+$-hover-color-dead: mix($-button-default-color, $-button-dead-color, 30%) !default;
+
+/*active*/
+$-active-color-button: #409eff !default;
+$-active-color-primary: mix($-button-black-color, $-button-Primary-color, 10%) !default;
+$-active-color-success: mix($-button-black-color, $-button-success-color, 10%) !default;
+$-active-color-subordination: mix($-button-black-color, $-button-subordination-color, 10%) !default;
+$-active-color-error: mix($-button-black-color, $-button-error-color, 10%) !default;
+$-active-color-warning: mix($-button-black-color, $-button-warning-color, 10%) !default;
+$-active-color-dead: mix($-button-black-color, $-button-dead-color, 10%) !default;
+
+/*大小*/
+/*mini*/
+$-button-mini-up-down: 6px;
+$-button-mini-left-right: 8px;
+$-button-mini-font: 12px;
+
+$-button-bin-up-down: 10px;
+$-button-bin-left-right: 14px;
+$-button-bin-font: 14px;
+
+//#6b95bf
+
+/* button-主题-color*/
+$-button-default-font-color: $-default-font-;
+$-button-default-background-color: $-color-default;
+$-button-default-border-color: $-color-default;
+
+
+//primary
+$-button-primary-font-color: $-color-default;
+$-button-primary-background-color: $-color-primary;
+$-button-primary-border-color: $-color-primary;
+//$-button-primary-box-show-color: rgba(64, 158, 255, 0.5);
+
+//success
+$-button-success-font-color: $-color-default;
+$-button-success-background-color: $-button-success-color;
+$-button-success-border-color: $-button-success-color;
+//$-button-success-box-show-color: rgba(25, 190, 107, 0.5);
+
+//subordination
+$-button-subordination-font-color: $-color-default;
+$-button-subordination-background-color: $-color-subordination;
+$-button-subordination-border-color: $-color-subordination;
+//$-button-subordination-box-show-color: rgba(63, 81, 181, 0.5);
+
+//error
+$-button-error-font-color: $-button-default-color;
+$-button-error-background-color: $-button-error-color;
+$-button-error-border-color: $-button-error-color;
+//$-button-error-box-show-color: rgba(237, 64, 20, 0.5);
+//warning
+$button-warning-font-color: $-button-default-color;
+$button-warning-background-color: $-button-warning-color;
+$button-warning-border-color: $-button-warning-color;
+//$button-warning-box-show-color: rgba(255, 153, 0, .5);
+
+/*dead*/
+$button-dead-font-color: $-button-default-color;
+$button-dead-background-color: $-button-dead-color;
+$button-dead-border-color: $-button-dead-color;
+
+
+

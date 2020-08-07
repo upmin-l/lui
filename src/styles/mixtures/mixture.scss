@@ -1,0 +1,85 @@
+@import "./commonality";
+$l:'';
+/* BEM 命名*/
+/*  l - 名字   */
+@mixin BEM($val) {
+  $l: $prefixName + '-' + $val !global;
+  .#{$l} {
+    @content
+  }
+}
+/*why type the css constructor*/
+/* is_ name */
+@mixin is-when($what) {
+  @at-root {
+    &.#{$state-prefix + $what} {
+      @content
+    }
+  }
+}
+/* separator */
+@mixin modifier($modifier) {
+  $is_modifier: '';
+  @each $item in $modifier {
+    $is_modifier: #{$is_modifier + & + $modifier-separator+$modifier }
+  }
+}
+/*************************************** button ************************************************************************/
+/*button the theme*/
+@mixin button-theme($modifier) {
+  $selector: &;
+  $currentSelector: ".";
+  @each $item in $modifier {
+    $currentSelector: #{ $currentSelector + 'l-button' +$modifier-separator + $item +','}
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content
+    }
+  }
+}
+
+/*button then state*/
+@mixin button-state($color,$background-color,$border-color,$-hover-color,$-active-color) {
+  color: $color;
+  background-color: $background-color;
+  background-image: linear-gradient(-180deg,$background-color,$border-color 90%);
+  border-color: $border-color;
+  box-shadow: 0 2px 6px 0 mix($background-color,#fff,70%);
+  &:hover,
+  &:focus {
+    color: $color;
+    background-color: $-hover-color;
+    border-color: $-hover-color;
+  }
+  &:active {
+    background-color: $-active-color;
+    color: #fff;
+    border-color: transparent;
+  }
+  &.is_simple{
+    color: $background-color;
+    background:0 0;
+    border-color: $background-color;
+  }
+  &.is_simple:hover, &.is_simple:focus{
+    background: mix($background-color,#fff,10%)
+  }
+  &.is_disabled{
+    cursor: no-drop;
+    background:mix(#fff,$background-color,60%);
+    border-color:mix(#fff,$background-color,60%);
+    box-shadow:none;
+    transform: translate(0);
+  }
+}
+//button then size
+@mixin button-size($padding-up-down,$padding-left-right,$font-size) {
+  padding: $padding-up-down $padding-left-right;
+  font-size: $font-size!important;
+}
+
+/****************************************** button end *******************************************************************/
+
+
+
