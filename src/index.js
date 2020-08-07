@@ -1,28 +1,16 @@
-import Switch from './packages/switch/src/switch.vue'
+import Switch from './packages/switch/index'
+import button from "./packages/button/index";
 const components = [
-    Switch
+    Switch,
+    button
 ];
-console.log(Switch);
-const install = function (Vue, opts) {
-    components.forEach((item) => {
-        Vue.component(`l-${item.name}`,item)
-    });
-    Vue.config.globalProperties.$LUI = {
-        size: opts.size || "",
-        zIndex: opts.zIndex || 1997
-    }
-};
-if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue, '')
-}
-
-const obj ={
+const rootComponents = {
     version: '0.00.1',
-    install:Vue =>{
-        components.forEach(item=>{
-            Vue.component(`l-${item.name}`,item)
+    install: Vue => {
+        components.forEach(item => {
+            Vue.component(`l-${item.name}`, item)
         });
 
     }
 };
-export default obj
+export default rootComponents
