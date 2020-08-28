@@ -1,16 +1,22 @@
-import Switch from './packages/switch/index'
-import button from "./packages/button/index";
+import lSwitch from './packages/switch/index'
+import lButton from "./packages/button/index";
+
 const components = [
-    Switch,
-    button
+    lSwitch,
+    lButton
 ];
+
 const rootComponents = {
-    version: '0.00.1',
+    version: '0.0.1',
     install: Vue => {
         components.forEach(item => {
-            Vue.component(`l-${item.name}`, item)
+            Vue.component(item.name, item)
         });
 
     }
 };
+export {
+    lSwitch,
+    lButton
+}
 export default rootComponents
