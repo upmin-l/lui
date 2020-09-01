@@ -1,5 +1,6 @@
 @import "../constant/commonality";
-$l:'';
+
+$l: '';
 /* BEM 命名*/
 /*  l - 名字   */
 @mixin BEM($val) {
@@ -8,6 +9,7 @@ $l:'';
     @content
   }
 }
+
 /*why type the css constructor*/
 /* is_ name */
 @mixin is-when($what) {
@@ -17,6 +19,7 @@ $l:'';
     }
   }
 }
+
 /* separator */
 @mixin modifier($modifier) {
   $is_modifier: '';
@@ -24,6 +27,7 @@ $l:'';
     $is_modifier: #{$is_modifier + & + $modifier-separator+$modifier }
   }
 }
+
 /*************************************** button ************************************************************************/
 /*button the theme*/
 @mixin button-theme($modifier) {
@@ -43,12 +47,11 @@ $l:'';
 @mixin button-state($color,$background-color,$border-color,$-hover-color,$-active-color) {
   color: $color;
   background-color: $background-color;
-  background-image: linear-gradient(-180deg,$background-color,$border-color 90%);
+  background-image: linear-gradient(-180deg, $background-color, $border-color 90%);
   border-color: $border-color;
-  box-shadow: 0 2px 6px 0 mix($background-color,#fff,70%);
+  box-shadow: 0 2px 6px 0 mix($background-color, #fff, 70%);
   &:hover,
   &:focus {
-    color: $color;
     background-color: $-hover-color;
     border-color: $-hover-color;
   }
@@ -57,26 +60,40 @@ $l:'';
     color: #fff;
     border-color: transparent;
   }
-  &.is_simple{
+  &.is_simple {
     color: $background-color;
-    background:0 0;
+    background: 0 0;
     border-color: $background-color;
   }
-  &.is_simple:hover, &.is_simple:focus{
-    background: mix($background-color,#fff,10%)
+  &.is_simple:hover, &.is_simple:focus {
+    background: mix($background-color, #fff, 10%)
   }
-  &.is_disabled{
+  &.is_disabled {
     cursor: no-drop;
-    background:mix(#fff,$background-color,60%);
-    border-color:mix(#fff,$background-color,60%);
-    box-shadow:none;
+    background: mix(#fff, $background-color, 60%);
+    border-color: mix(#fff, $background-color, 60%);
+    box-shadow: none;
     transform: translate(0);
   }
 }
+
+//button then gradient
+@mixin button-gradient($background-image,$border-color,$background-color,$-hover-color-primary) {
+  color: #ffff;
+  background-image: $background-image;
+  border: $border-color;
+  background-color: $background-color;
+  &:hover{
+    background-color: $-hover-color-primary;
+    border-color: $-hover-color-primary;
+    box-shadow: 0 8px 25px -8px #AAAAAA;
+  }
+}
+
 //button then size
 @mixin button-size($padding-up-down,$padding-left-right,$font-size) {
   padding: $padding-up-down $padding-left-right;
-  font-size: $font-size!important;
+  font-size: $font-size !important;
 }
 
 /****************************************** button end *******************************************************************/

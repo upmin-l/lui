@@ -10,7 +10,7 @@ const cssMin = require('gulp-cssmin');
 let paths = {
     styles: {
         src: '../src/styles/**/*.scss',
-        dest: '../bag/lib/styles'
+        dest: '../bag/styles'
     },
 };
 const url = '../src/styles/index.scss';
@@ -25,11 +25,11 @@ function compile() {
     }))
         .pipe(cssMin())
         .pipe(rename('index.css'))
-        .pipe(dest('../bag/lib/styles'))
+        .pipe(dest('../bag/styles'))
 }
 
 function copyFont() {
-    return src('../examples/styles/fonts/**').pipe(cssMin()).pipe(dest('../bag/lib/fonts'))
+    return src('../examples/styles/fonts/**').pipe(cssMin()).pipe(dest('../bag/fonts'))
 }
 
 function is_watch() {

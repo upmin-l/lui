@@ -1,12 +1,12 @@
 /*主颜色*/
 $-default-: #fff;
-$-Primary-: #2d8cf0;
+$-Primary-: #3C8CE7;
 $-succeed-: #19be6b;
 $-subordination-: #3f51b5;
-$-error-: #f47983;
+$-error-: #ED213A;
 $-warning-: #ff9900;
 $-black-: #1e1e1e;
-$-dead-: #314158;
+$-dark-: #314158;
 $-default-font-: #7f8280;
 
 /*button 状态 颜色*/
@@ -17,7 +17,7 @@ $-button-subordination-color: $-subordination-;
 $-button-error-color: $-error-;
 $-button-warning-color: $-warning-;
 $-button-black-color: $-black-;
-$-button-dead-color: $-dead-;
+$-button-dark-color: $-black-;
 
 /*button border */
 /* color*/
@@ -37,7 +37,7 @@ $-hover-color-success: mix($-button-default-color, $-button-success-color, 30%) 
 $-hover-color-subordination: mix($-button-default-color, $-button-subordination-color, 30%) !default;
 $-hover-color-error: mix($-button-default-color, $-button-error-color, 30%) !default;
 $-hover-color-warning: mix($-button-default-color, $-button-warning-color, 30%) !default;
-$-hover-color-dead: mix($-button-default-color, $-button-dead-color, 30%) !default;
+$-hover-color-dark: mix($-button-default-color, $-button-dark-color, 30%) !default;
 
 /*active*/
 $-active-color-button: #409eff !default;
@@ -46,7 +46,7 @@ $-active-color-success: mix($-button-black-color, $-button-success-color, 10%) !
 $-active-color-subordination: mix($-button-black-color, $-button-subordination-color, 10%) !default;
 $-active-color-error: mix($-button-black-color, $-button-error-color, 10%) !default;
 $-active-color-warning: mix($-button-black-color, $-button-warning-color, 10%) !default;
-$-active-color-dead: mix($-button-black-color, $-button-dead-color, 10%) !default;
+$-active-color-dark: mix($-button-black-color, $-button-dark-color, 10%) !default;
 
 /*大小*/
 /*mini*/
@@ -68,7 +68,7 @@ $-button-default-border-color: $-color-default;
 
 //primary
 $-button-primary-font-color: $-color-default;
-$-button-primary-background-color: $-color-primary;
+$-button-primary-background-color: $-button-Primary-color;
 $-button-primary-border-color: $-color-primary;
 //$-button-primary-box-show-color: rgba(64, 158, 255, 0.5);
 
@@ -95,7 +95,7 @@ $button-warning-background-color: $-button-warning-color;
 $button-warning-border-color: $-button-warning-color;
 //$button-warning-box-show-color: rgba(255, 153, 0, .5);
 
-/*dead*/
-$button-dead-font-color: $-button-default-color;
-$button-dead-background-color: $-button-dead-color;
-$button-dead-border-color: $-button-dead-color;
+/*dark*/
+$button-dark-font-color: $-button-default-color;
+$button-dark-background-color: $-button-dark-color;
+$button-dark-border-color: $-button-dark-color;

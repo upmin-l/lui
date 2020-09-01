@@ -1,4 +1,4 @@
-@import "../common/let";
+@import "../constant/const";
 @import "../mixtures/mixture";
 /*button 样式*/
 .l-button {
@@ -21,27 +21,28 @@
   color: $-default-font-;
   //transform: translate(0px, 0px);
   transition: transform .2s ease;
-  &:hover{
-    transform: translateY(-2px);
+  //&:hover{
+  //  transform: translateY(-2px);
+  //}
+}
+
+//创建不同类型的button
+@include button-theme(primary) {
+  @include button-state($-button-primary-font-color, $-button-primary-background-color, $-button-primary-border-color, $-hover-color-primary, $-active-color-primary)
+}
+
+@include button-theme(default) {
+  &:active {
+    background-color: transparent;
+    color: $-button-Primary-color;
+    border-color: $-button-Primary-color;
+    border-spacing: 3px;
   }
   &:focus {
     color: $-button-Primary-color;
     background-color: transparent;
     border-color: $-button-Primary-color;
   }
-
-  &:active {
-    background-color: transparent;
-    color: $-button-Primary-color;
-    border-color: $-button-Primary-color;
-    border-spacing: 3px;
-    transform: translate(0);
-  }
-}
-
-//创建不同类型的button
-@include button-theme(primary) {
-  @include button-state($-button-primary-font-color, $-button-primary-background-color, $-button-primary-border-color, $-hover-color-primary, $-active-color-primary)
 }
 
 @include button-theme(success) {
@@ -60,9 +61,57 @@
   @include button-state($button-warning-font-color, $button-warning-background-color, $button-warning-border-color, $-hover-color-warning, $-active-color-warning)
 }
 
-@include button-theme(dead) {
-  @include button-state($button-dead-font-color, $button-dead-background-color, $button-dead-border-color, $-hover-color-dead, $-active-color-dead)
+@include button-theme(dark) {
+  @include button-state($button-dark-font-color, $button-dark-background-color, $button-dark-border-color, $-hover-color-dark, $-active-color-dark)
 }
+
+@include button-theme(g-warning) {
+  @include button-gradient(
+                  linear-gradient(30deg, #FD6E6A 10%, #FFC600 100%),
+                  none,
+                  mix(#fff, $-warning-, 50%), $-hover-color-warning
+  )
+}
+
+@include button-theme(g-subordination) {
+  @include button-gradient(
+                  linear-gradient(30deg, #3B2667 10%, #BC78EC 100%),
+                  none,
+                  mix(#000, $-subordination-, 50%), $-hover-color-subordination
+  )
+}
+
+@include button-theme(g-error) {
+  @include button-gradient(
+                  linear-gradient(30deg, #ED213A 10%, #93291E 100%),
+                  none,
+                  mix(#000, $-error-, 50%), $-hover-color-error
+  )
+}
+
+@include button-theme(g-primary) {
+  @include button-gradient(
+                  linear-gradient(30deg, #3C8CE7 10%, #00EAFF 100%),
+                  none,
+                  mix(#000, $-Primary-, 50%), $-hover-color-primary
+  );
+}
+
+@include button-theme(g-success) {
+  @include button-gradient(
+                  linear-gradient(30deg, $-succeed- 10%, #a8e063 100%),
+                  none,
+                  mix(#000, $-succeed-, 50%), $-hover-color-success
+  );
+}
+@include button-theme(g-dark) {
+  @include button-gradient(
+                  linear-gradient(30deg, $-black- 10%, #676767 100%),
+                  none,
+                  mix(#000, $-black-, 50%), $-hover-color-dark
+  );
+}
+
 
 @include button-theme(mini) {
   @include button-size($-button-mini-up-down, $-button-mini-left-right, $-button-mini-font)
@@ -71,3 +120,4 @@
 @include button-theme(bin) {
   @include button-size($-button-bin-up-down, $-button-bin-left-right, $-button-bin-font)
 }
+
