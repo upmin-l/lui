@@ -2,7 +2,7 @@
   <button class="l-switch" @click="switchClick" :class="{'l-switch-checked':isChecked}"
           :style="{backgroundColor:isChecked?trueBackground:falseBackground}">
     <span class="l-switch-inner">
-      {{ value ? showName[0] : showName[1] }}
+      {{ isChecked ? showName[0] : showName[1] }}
     </span>
   </button>
 </template>
@@ -58,10 +58,9 @@ export default {
       disabled: false,
       emit: context.emit
     })
-
     return {
       switchClick,
-      isChecked
+      isChecked,
     }
   }
 }

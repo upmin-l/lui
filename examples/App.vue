@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/lui.png"/>
   <div>{{ switchValue }}</div>
-  <l-switch v-model:value="switchValue" @change="handledChang" :show-name="['开启','关闭']" open-value="44" close-value="100"></l-switch>
+  <l-switch v-model:value="switchValue" @change="handledChang" :show-name="['开','关']" true-background="#f60" false-background="#f60" ></l-switch>
   <!--    <l-button>hhh</l-button>-->
   <l-button size="bin" disabled theme="success" @click="handledClick">确认按钮</l-button>
   <l-button disabled theme="success" @click="handledClick">确认按钮</l-button>
@@ -80,7 +80,7 @@ export default {
       // console.log(a);
     };
     const handledChang = (val,e)=>{
-      console.log(val);
+      // console.log(val);
 
     }
     return {
