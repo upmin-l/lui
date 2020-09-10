@@ -1,31 +1,42 @@
 <template>
   <button v-bind="res"
           class="l-button"
+          ref="btn"
+          @click="onClick"
+          @animationend="onAnimationend"
           :disabled="is_disabled"
-          :class="[is_theme,is_size,{'is_disabled':is_disabled}]"
+          :class="[is_computeTheme,is_size,{'is_disabled':is_disabled},block?'is_block':'',{'is_after':is_after}]"
           type="button">
-    <span><slot>button</slot></span>
+    <span v-if="icon" :class="icon"></span>
+    <span><slot></slot></span>
   </button>
 </template>
 
-<script>
-import {computed} from 'vue'
+<script lang="ts">
+import {computed, ref} from 'vue'
 
 export default {
   name: "lButton",
+  inheritAttrs: false,
   props: {
     size: String,
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+    disabled: {type: Boolean, default: false},
+    block: Boolean,
     theme: String,
-    gradient: String
+    gradient: String,
+    icon: [String, Array],
+    circle: Boolean
   },
-  setup(props, context) {
-    const is_theme = computed(() => {
-      const signArr = ['primary', 'success', 'subordination', 'error', 'warning', 'dark'].find(item => props.gradient === item)
-      return signArr ? `l-button-g-${signArr}` : props.theme ? `l-button-${props.theme}` : `l-button-default`
+  setup(props: { gradient: string; theme: any; disabled: any; circle: any; size: string }, context: { attrs: { [x: string]: any } }) {
+    const is_after = ref(false)
+    const is_computeTheme = computed(() => {
+      if (!props.circle) {
+        const signArr = ['primary', 'success', 'subordination', 'error', 'warning', 'dark'].find(item => props.gradient === item)
+        return signArr ? `l-button-g-${signArr}` : props.theme ? `l-button-${props.theme}` : `l-button-default`
+      } else {
+        //TODO
+        return `is_circle l-button-${props.theme}`
+      }
     })
     const is_disabled = computed(() => {
       return !!props.disabled
@@ -34,12 +45,24 @@ export default {
       const is_sizeRes = ['bin', 'mini'].find(item => props.size === item)
       return is_sizeRes ? `l-button-${is_sizeRes}` : ''
     })
+    const onAnimationend = (e:MouseEvent)=>{
+      is_after.value = false;
+    }
+    const onClick = (e: MouseEvent) => {
+      if (props.disabled) {
+        e.preventDefault()
+      }
+      is_after.value = true;
+    }
     const {...res} = context.attrs
     return {
       res,
-      is_theme,
+      is_computeTheme,
       is_disabled,
-      is_size
+      is_size,
+      onClick,
+      is_after,
+      onAnimationend
     }
   }
 }

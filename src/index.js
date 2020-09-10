@@ -1,9 +1,11 @@
-import lSwitch from './packages/switch/index'
-import lButton from "./packages/button/index";
+import lSwitch from './packages/switch'
+import lButton from "./packages/button";
+import lRadio from "./packages/radio"
 
 const components = [
     lSwitch,
-    lButton
+    lButton,
+    lRadio
 ];
 
 const rootComponents = {
@@ -17,6 +19,7 @@ const rootComponents = {
 };
 export {
     lSwitch,
-    lButton
+    lButton,
+    lRadio
 }
 export default rootComponents

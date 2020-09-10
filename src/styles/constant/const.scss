@@ -1,6 +1,6 @@
 /*主颜色*/
 $-default-: #fff;
-$-Primary-: #3C8CE7;
+$-Primary-: #1890ff;
 $-succeed-: #19be6b;
 $-subordination-: #3f51b5;
 $-error-: #ED213A;
@@ -8,6 +8,7 @@ $-warning-: #ff9900;
 $-black-: #1e1e1e;
 $-dark-: #314158;
 $-default-font-: #7f8280;
+$-font-size-default:14px !default;
 
 /*button 状态 颜色*/
 $-button-default-color: $-default-;
@@ -99,3 +100,12 @@ $button-warning-border-color: $-button-warning-color;
 $button-dark-font-color: $-button-default-color;
 $button-dark-background-color: $-button-dark-color;
 $button-dark-border-color: $-button-dark-color;
+
+
+/**************************************switch*******************/
+
+
+$-switch-width: 44px !default;
+$-switch-height: 22px !default;
+$-switch-border-radius: 100px !default;
+$-switch-font-size:$-font-size-default

@@ -9,7 +9,6 @@
   background: $-button-default-color;
   -webkit-appearance: none;
   text-align: center;
-  box-sizing: border-box;
   outline: none;
   padding: 7px 12px;
   margin-left: 10px;
@@ -24,6 +23,10 @@
   //&:hover{
   //  transform: translateY(-2px);
   //}
+}
+
+@include is-when(block){
+  width: 100%;
 }
 
 //创建不同类型的button
@@ -83,9 +86,9 @@
 
 @include button-theme(g-error) {
   @include button-gradient(
-                  linear-gradient(30deg, #ED213A 10%, #93291E 100%),
+                  linear-gradient(30deg, #93291E 10%, #ED213A 100%),
                   none,
-                  mix(#000, $-error-, 50%), $-hover-color-error
+                  mix(#fff, $-error-, 50%), $-hover-color-error
   )
 }
 
@@ -104,9 +107,10 @@
                   mix(#000, $-succeed-, 50%), $-hover-color-success
   );
 }
+
 @include button-theme(g-dark) {
   @include button-gradient(
-                  linear-gradient(30deg, $-black- 10%, #676767 100%),
+                  linear-gradient(30deg, $-black- 10%, #999898 100%),
                   none,
                   mix(#000, $-black-, 50%), $-hover-color-dark
   );
@@ -121,3 +125,10 @@
   @include button-size($-button-bin-up-down, $-button-bin-left-right, $-button-bin-font)
 }
 
+@include is-when(circle){
+  min-width: 32px;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+  border-radius: 50%;
+}
