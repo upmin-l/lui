@@ -8,7 +8,7 @@ $-warning-: #ff9900;
 $-black-: #1e1e1e;
 $-dark-: #314158;
 $-default-font-: #7f8280;
-$-font-size-default:14px !default;
+$-font-size-default: 14px !default;
 
 /*button 状态 颜色*/
 $-button-default-color: $-default-;
@@ -105,7 +105,17 @@ $button-dark-border-color: $-button-dark-color;
 /**************************************switch*******************/
 
 
-$-switch-width: 44px !default;
-$-switch-height: 22px !default;
-$-switch-border-radius: 100px !default;
-$-switch-font-size:$-font-size-default
+$switch-width: 44px !default;
+$switch-height: 22px !default;
+$switch-border-radius: 100px !default;
+$switch-font-size: $-font-size-default;
+
+
+/**************************************radio*******************/
+
+$radio-line-height: 16px;
+$radio-font-size: $-font-size-default;
+$radio-margin:0 10px 5px 0 !default;
+$radio-inner-margin:5px;
+$radio-inner-before-size:8px;
+$radio-inner-background:$-Primary- !default;

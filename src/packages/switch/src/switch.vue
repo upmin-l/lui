@@ -18,7 +18,8 @@ export default {
     showName: {
       validator(value) {
         return Array.isArray(value) && value.length === 2
-      }
+      },
+      default:[null,null]
     },
     openValue: {
       type: [String, Boolean, Number],

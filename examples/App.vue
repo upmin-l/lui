@@ -1,7 +1,14 @@
 <template>
   <img alt="Vue logo" src="./assets/lui.png"/>
   <div>{{ switchValue }}</div>
-  <l-switch v-model:value="switchValue" @change="handledChang" :show-name="['开','关']" true-background="#f60" false-background="#f60" ></l-switch>
+  <l-radio @change="radioChange"></l-radio>
+  <l-radio>备选项</l-radio>
+  <l-switch
+      v-model:value="switchValue"
+      @change="handledChang"
+      :show-name="['开','关']"
+      true-background="#f60"
+      false-background="#f60" ></l-switch>
   <!--    <l-button>hhh</l-button>-->
   <l-button size="bin" disabled theme="success" @click="handledClick">确认按钮</l-button>
   <l-button disabled theme="success" @click="handledClick">确认按钮</l-button>
@@ -60,7 +67,6 @@
   </div>
   <div>{{ a }}</div>
   <br>
-  <l-radio></l-radio>
 </template>
 <script>
 import {lButton} from '../src'
@@ -83,11 +89,15 @@ export default {
       // console.log(val);
 
     }
+    const radioChange = (val)=>{
+      console.log(val);
+    }
     return {
       handledClick,
       a,
       switchValue,
-      handledChang
+      handledChang,
+      radioChange
     }
   }
 
