@@ -8,7 +8,7 @@
       @change="handledChang"
       :show-name="['开','关']"
       true-background="#f60"
-      false-background="#f60" ></l-switch>
+      false-background="#f60"></l-switch>
   <!--    <l-button>hhh</l-button>-->
   <l-button size="bin" disabled theme="success" @click="handledClick">确认按钮</l-button>
   <l-button disabled theme="success" @click="handledClick">确认按钮</l-button>
@@ -47,18 +47,18 @@
   <l-button size="mini" theme="dark" @click="handledClick">确认按钮</l-button>
   <l-button size="bin" gradient="dark" @click="handledClick">确认按钮</l-button>
   <br>
- <div ref="aa" class="a-block-box">
-   <div class="block-box">
-     <l-button size="bin" theme="subordination" block @click="handledClick">确认按钮</l-button>
-     <l-button size="bin" theme="primary" block @click="handledClick">确认按钮</l-button>
-     <l-button size="bin" theme="warning" block @click="handledClick">确认按钮</l-button>
-     <l-button size="bin" theme="error" block @click="handledClick">确认按钮</l-button>
-     <l-button size="bin" theme="success" block @click="handledClick">确认按钮</l-button>
-     <l-button size="bin" class="iconfont icon-d" block theme="dark"  @click="handledClick">确认按钮</l-button>
-   </div>
- </div>
+  <div ref="aa" class="a-block-box">
+    <div class="block-box">
+      <l-button size="bin" theme="subordination" block @click="handledClick">确认按钮</l-button>
+      <l-button size="bin" theme="primary" block @click="handledClick">确认按钮</l-button>
+      <l-button size="bin" theme="warning" block @click="handledClick">确认按钮</l-button>
+      <l-button size="bin" theme="error" block @click="handledClick">确认按钮</l-button>
+      <l-button size="bin" theme="success" block @click="handledClick">确认按钮</l-button>
+      <l-button size="bin" class="iconfont icon-d" block theme="dark" @click="handledClick">确认按钮</l-button>
+    </div>
+  </div>
   <div>
-    <l-button  theme="success" icon="iconfont icon-d" @click="handledClick" circle></l-button>
+    <l-button theme="success" icon="iconfont icon-d" @click="handledClick" circle></l-button>
     <l-button theme="error" icon="iconfont icon-d" @click="handledClick" circle></l-button>
     <l-button theme="warning" icon="iconfont icon-bianji1" @click="handledClick" circle></l-button>
     <l-button theme="primary" icon="iconfont icon-tubiaozhizuomoban" @click="handledClick" circle></l-button>
@@ -67,16 +67,21 @@
   </div>
   <div>{{ a }}</div>
   <br>
+  <div>
+    <l-tabs>
+      <l-tab-item label="标签1"></l-tab-item>
+      <l-tab-item label="标签2"></l-tab-item>
+      <l-tab-item label="标签3"></l-tab-item>
+    </l-tabs>
+  </div>
 </template>
 <script>
-import {lButton} from '../src'
+
 import {computed, ref} from 'vue'
 
 export default {
   name: 'App',
-  components: {
-    lButton
-  },
+
 
   setup(props, context) {
     let a = ref(1)
@@ -85,11 +90,11 @@ export default {
       a.value++
       // console.log(a);
     };
-    const handledChang = (val,e)=>{
+    const handledChang = (val, e) => {
       // console.log(val);
 
     }
-    const radioChange = (val)=>{
+    const radioChange = (val) => {
       console.log(val);
     }
     return {
@@ -103,13 +108,14 @@ export default {
 
 }
 </script>
-<style >
-.a-block-box{
+<style>
+.a-block-box {
   width: 900px;
   margin: 0 auto;
   overflow: hidden;
 }
-.block-box{
+
+.block-box {
   float: left;
   width: 400px;
   margin: 0 10px;
