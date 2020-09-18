@@ -8,63 +8,65 @@
 </template>
 
 <script lang="ts">
-import {computed, toRefs, onMounted} from "vue"
+import {defineComponent,computed, toRefs, onMounted} from "vue"
 
-export default {
-  name: "lSwitch",
-  emits: ['update:value', 'change'],
-  props: {
-    value: Boolean,
-    showName: {
-      validator(value) {
-        return Array.isArray(value) && value.length === 2
+export default defineComponent(
+    {
+      name: "lSwitch",
+      emits: ['update:value', 'change'],
+      props: {
+        value: Boolean,
+        showName: {
+          validator(value) {
+            return Array.isArray(value) && value.length === 2
+          },
+          default:[null,null]
+        },
+        openValue: {
+          type: [String, Boolean, Number],
+          default: true
+        },
+        closeValue: {
+          type: [String, Boolean, Number],
+          default: false
+        },
+        trueBackground: String,
+        falseBackground: String
       },
-      default:[null,null]
-    },
-    openValue: {
-      type: [String, Boolean, Number],
-      default: true
-    },
-    closeValue: {
-      type: [String, Boolean, Number],
-      default: false
-    },
-    trueBackground: String,
-    falseBackground: String
-  },
-  setup(props, context) {
-    const {value, openValue, closeValue} = toRefs(props);
+      setup(props, context) {
+        const {value, openValue, closeValue} = toRefs(props);
 
-    normalize({value, openValue, closeValue, emit: context.emit})
-    const isChecked = computed(() => {
-      return value.value === openValue.value
-    })
-    const useClick = ({isChecked, closeValue, openValue, disabled, emit}) => {
-      const getNewValue = () => {
-        return isChecked.value ? closeValue.value : openValue.value
-      }
-      const switchClick = () => {
-        const newValue = getNewValue();
-        emit('update:value', newValue)
-        emit('change', newValue)
-      }
-      return {
-        switchClick
+        normalize({value, openValue, closeValue, emit: context.emit})
+        const isChecked = computed(() => {
+          return value.value === openValue.value
+        })
+        const useClick = ({isChecked, closeValue, openValue, disabled, emit}) => {
+          const getNewValue = () => {
+            return isChecked.value ? closeValue.value : openValue.value
+          }
+          const switchClick = () => {
+            const newValue = getNewValue();
+            emit('update:value', newValue)
+            emit('change', newValue)
+          }
+          return {
+            switchClick
+          }
+        }
+        const {switchClick} = useClick({
+          isChecked,
+          closeValue,
+          openValue,
+          disabled: false,
+          emit: context.emit
+        })
+        return {
+          switchClick,
+          isChecked,
+        }
       }
     }
-    const {switchClick} = useClick({
-      isChecked,
-      closeValue,
-      openValue,
-      disabled: false,
-      emit: context.emit
-    })
-    return {
-      switchClick,
-      isChecked,
-    }
-  }
-}
+)
 const normalize = ({value, openValue, closeValue, emit}) => {
   onMounted(() => {
     if (value.value !== openValue.value && value.value !== closeValue.value) {

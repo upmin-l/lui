@@ -13,57 +13,59 @@
 </template>
 
 <script lang="ts">
-import {computed, ref} from 'vue'
+import {defineComponent, computed, ref} from 'vue'
 
-export default {
-  name: "lButton",
-  inheritAttrs: false,
-  props: {
-    size: String,
-    disabled: {type: Boolean, default: false},
-    block: Boolean,
-    theme: String,
-    gradient: String,
-    icon: [String, Array],
-    circle: Boolean
-  },
-  setup(props: { gradient: string; theme: any; disabled: any; circle: any; size: string }, context: { attrs: { [x: string]: any } }) {
-    const is_after = ref(false)
-    const is_computeTheme = computed(() => {
-      if (!props.circle) {
-        const signArr = ['primary', 'success', 'subordination', 'error', 'warning', 'dark'].find(item => props.gradient === item)
-        return signArr ? `l-button-g-${signArr}` : props.theme ? `l-button-${props.theme}` : `l-button-default`
-      } else {
-        //TODO
-        return `is_circle l-button-${props.theme}`
+export default defineComponent(
+    {
+      name: "lButton",
+      inheritAttrs: false,
+      props: {
+        size: String,
+        disabled: {type: Boolean, default: false},
+        block: Boolean,
+        theme: String,
+        gradient: String,
+        icon: [String, Array],
+        circle: Boolean
+      },
+      setup(props: any, context: any) {
+        const is_after = ref(false)
+        const is_computeTheme = computed(() => {
+          if (!props.circle) {
+            const signArr = ['primary', 'success', 'subordination', 'error', 'warning', 'dark'].find(item => props.gradient === item)
+            return signArr ? `l-button-g-${signArr}` : props.theme ? `l-button-${props.theme}` : `l-button-default`
+          } else {
+            //TODO
+            return `is_circle l-button-${props.theme}`
+          }
+        })
+        const is_disabled = computed(() => {
+          return !!props.disabled
+        })
+        const is_size = computed(() => {
+          const is_sizeRes = ['bin', 'mini'].find(item => props.size === item)
+          return is_sizeRes ? `l-button-${is_sizeRes}` : ''
+        })
+        const onAnimationend = (e: MouseEvent) => {
+          is_after.value = false;
+        }
+        const onClick = (e: MouseEvent) => {
+          if (props.disabled) {
+            e.preventDefault()
+          }
+          is_after.value = true;
+        }
+        const {...res} = context.attrs
+        return {
+          res,
+          is_computeTheme,
+          is_disabled,
+          is_size,
+          onClick,
+          is_after,
+          onAnimationend
+        }
       }
-    })
-    const is_disabled = computed(() => {
-      return !!props.disabled
-    })
-    const is_size = computed(() => {
-      const is_sizeRes = ['bin', 'mini'].find(item => props.size === item)
-      return is_sizeRes ? `l-button-${is_sizeRes}` : ''
-    })
-    const onAnimationend = (e:MouseEvent)=>{
-      is_after.value = false;
     }
-    const onClick = (e: MouseEvent) => {
-      if (props.disabled) {
-        e.preventDefault()
-      }
-      is_after.value = true;
-    }
-    const {...res} = context.attrs
-    return {
-      res,
-      is_computeTheme,
-      is_disabled,
-      is_size,
-      onClick,
-      is_after,
-      onAnimationend
-    }
-  }
-}
+)
 </script>

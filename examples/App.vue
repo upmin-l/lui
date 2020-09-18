@@ -1,14 +1,12 @@
 <template>
-<!--  <img alt="Vue logo" src="./assets/lui.png"/>-->
+  <!--  <img alt="Vue logo" src="./assets/lui.png"/>-->
   <div>{{ switchValue }}</div>
-  <l-radio @change="radioChange"></l-radio>
+  <l-radio @change="radioChange">默认</l-radio>
   <l-radio>备选项</l-radio>
   <l-switch
       v-model:value="switchValue"
       @change="handledChang"
-      :show-name="['开','关']"
-      true-background="#f60"
-      false-background="#f60"></l-switch>
+      :show-name="['开','关']"></l-switch>
   <div ref="aa" class="a-block-box">
     <div class="block-box">
       <l-tabs style="width: 500px" v-model:value="activeName" @tabsClick="handledTabsClick">
@@ -23,12 +21,15 @@
           </p>
         </l-tab-item>
         <l-tab-item label="标签2" name="2">
-          <p>Austin artisan cornhole, microdosing messenger bag neutra tilde ramps chambray knausgaard. Messenger bag
-            helvetica dreamcatcher migas, pork belly cold-pressed actually schlitz viral green juice vegan. XOXO
-            mustache butcher, artisan shoreditch beard seitan lo-fi locavore banh mi skateboard organic. Sriracha ennui
-            synth, viral chartreuse gentrify umami. Beard pour-over single-origin coffee, direct trade post-ironic
-            keytar roof party twee shoreditch. Godard heirloom wolf, pabst pickled offal shoreditch. Kogi gentrify
-            truffaut, viral irony kickstarter tumblr pop-up kitsch jean shorts next level cold-pressed.</p>
+          <p>cliche. Meggings fap leggings slow-carb kickstarter, health goth gastropub hashtag blue bottle photo booth
+            literally PBR&B iPhone ugh. Organic scenester truffaut pug, pitchfork man bun artisan brooklyn photo booth.
+            Biodiesel farm-to-table 8-bit direct trade humblebrag, man braid blue bottle.</p>
+          <l-button theme="success" icon="iconfont icon-d" @click="handledClick" circle></l-button>
+          <l-button theme="error" icon="iconfont icon-d" @click="handledClick" circle></l-button>
+          <l-button theme="warning" icon="iconfont icon-bianji1" @click="handledClick" circle></l-button>
+          <l-button theme="primary" icon="iconfont icon-tubiaozhizuomoban" @click="handledClick" circle></l-button>
+          <l-button theme="subordination" icon="iconfont icon-jigui" @click="handledClick" circle></l-button>
+          <l-button theme="dark" icon="iconfont icon-shebeijieruwangguanxinxi" @click="handledClick" circle></l-button>
         </l-tab-item>
         <l-tab-item label="标签3" name="3">
           <p>

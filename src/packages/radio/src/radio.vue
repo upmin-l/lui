@@ -9,29 +9,31 @@
 </template>
 
 <script>
-import {toRefs, getCurrentInstance, computed} from "vue"
+import {defineComponent,toRefs, getCurrentInstance, computed} from "vue"
 
-export default {
-  name: "lRadio",
-  props: {
-    value: [String, Number, Boolean],
-    label: {
-      type: [String, Number, Boolean, Symbol],
-      default: false
-    }
-  },
-  emits: ['update:value', 'change'],
-  setup(props) {
-    const {value, label} = toRefs(props);
-    const radioChange = () => {
-      console.log(value.value);
-    }
+export default defineComponent(
+    {
+      name: "lRadio",
+      props: {
+        value: [String, Number, Boolean],
+        label: {
+          type: [String, Number, Boolean, Symbol],
+          default: false
+        }
+      },
+      emits: ['update:value', 'change'],
+      setup(props) {
+        const {value, label} = toRefs(props);
+        const radioChange = () => {
+          console.log(value.value);
+        }
 
-    return {
-      radioChange
+        return {
+          radioChange
+        }
+      }
     }
-  }
-}
+)
 
 function manageModel() {
   const {emit} = getCurrentInstance();
