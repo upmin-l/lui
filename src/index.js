@@ -2,6 +2,7 @@ import lSwitch from './packages/switch'
 import lButton from "./packages/button";
 import lRadio from "./packages/radio"
 import {default as lTabs} from "./packages/tabs"
+import {lTabsItem} from "./packages/tabs"
 import lDialog from "./packages/dialog";
 
 const components = [
@@ -9,7 +10,8 @@ const components = [
     lButton,
     lRadio,
     lTabs,
-    lDialog
+    lDialog,
+    lTabsItem
 ];
 
 const install = function (Vue) {
@@ -22,8 +24,7 @@ export {
     lButton,
     lRadio,
     lTabs,
-    lDialog
+    lDialog,
+    lTabsItem
 }
-export default {
-    install
-}
+export default install

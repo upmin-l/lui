@@ -7,7 +7,7 @@
   </button>
 </template>
 
-<script lang="ts">
+<script>
 import {defineComponent,computed, toRefs, onMounted} from "vue"
 
 export default defineComponent(

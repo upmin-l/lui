@@ -17,9 +17,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
-import {defineComponent,onMounted, ref, watchEffect} from "vue"
+import {defineComponent, onMounted, ref, watchEffect} from "vue"
 import tabItem from "./tabItem.vue";
 
 export default defineComponent(
@@ -36,11 +36,11 @@ export default defineComponent(
           default: 'top'
         }
       },
-      setup(props: any, context: any ) {
+      setup(props, context) {
         const defaults = context.slots.default();
-        const selectedItem = ref<HTMLDivElement>();
-        const indicator = ref<HTMLDivElement>();
-        const navBox = ref<HTMLDivElement>();
+        const selectedItem = ref();
+        const indicator = ref();
+        const navBox = ref();
         let sign = 0
         let newLabel = null;
         let newName = null;
@@ -48,7 +48,7 @@ export default defineComponent(
         } else {
           throw new Error('the "data" must be an array of length greater than 1')
         }
-        defaults.map((v:any) => {
+        defaults.map((v) => {
           if (v.type !== tabItem) {
             throw new Error('parse component failed, "tabs" component expect "<l-tab-item>"')
           }
@@ -85,71 +85,70 @@ export default defineComponent(
     }
 )
 </script>
-<!--<style>-->
-<!--.l-tabs {-->
-<!--  position: relative;-->
-<!--  overflow: hidden;-->
-<!--  color: #515a6e;-->
-<!--  zoom: 1;-->
-<!--}-->
+<style>
+.l-tabs {
+  position: relative;
+  overflow: hidden;
+  color: #515a6e;
+  zoom: 1;
+}
 
-<!--.l-tabs-nav {-->
-<!--  display: flex;-->
-<!--  width: 100%;-->
-<!--}-->
+.l-tabs-nav {
+  display: flex;
+  width: 100%;
+}
 
-<!--.l-tabs-nav-item {-->
-<!--  height: 100%;-->
-<!--  margin-right: 15px;-->
-<!--  padding: 12px 15px;-->
-<!--  text-decoration: none;-->
-<!--  cursor: pointer;-->
-<!--  transition: color .3s cubic-bezier(.645, .045, .355, 1);-->
-<!--}-->
+.l-tabs-nav-item {
+  height: 100%;
+  margin-right: 15px;
+  padding: 12px 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .3s cubic-bezier(.645, .045, .355, 1);
+}
 
-<!--.l-tabs-content {-->
-<!--  width: 100%;-->
-<!--  display: flex;-->
-<!--  flex-wrap: wrap;-->
-<!--  flex-direction: column;-->
-<!--  text-align: left;-->
-<!--}-->
+.l-tabs-content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+}
 
-<!--.l-tabs-item {-->
-<!--  height: 0;-->
-<!--  overflow: hidden;-->
-<!--  opacity: 0;-->
-<!--  visibility: hidden;-->
-<!--  position: relative;-->
-<!--  font-size: 15px;-->
-<!--  line-height: 28px;-->
-<!--  width: 0;-->
-<!--  transform: scale(0.9);-->
-<!--  transition: all .3s ease-in;-->
-<!--  filter: blur(2px);-->
-<!--  z-index: 9;-->
-<!--}-->
+.l-tabs-item {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+  font-size: 15px;
+  line-height: 28px;
+  width: 0;
+  transform: scale(0.9);
+  transition: all .3s ease-in;
+  filter: blur(2px);
+  z-index: 9;
+}
 
-<!--.is_tabs&#45;&#45;active {-->
-<!--  height: auto;-->
-<!--  overflow: auto;-->
-<!--  transition-delay: 250ms;-->
-<!--  width: auto;-->
-<!--  opacity: 1;-->
-<!--  filter: blur(0);-->
-<!--  visibility: visible;-->
-<!--  transform: scale(1);-->
-<!--}-->
+.is_tabs--active {
+  height: auto;
+  overflow: auto;
+  transition-delay: 250ms;
+  width: auto;
+  opacity: 1;
+  filter: blur(0);
+  visibility: visible;
+  transform: scale(1);
+}
 
-<!--.is-tabs&#45;&#45;nav-active {-->
-<!--  color: #2c81db;-->
-<!--}-->
+.is-tabs--nav-active {
+  color: #2c81db;
+}
 
-<!--.l-tabs-nav-bar {-->
-<!--  position: absolute;-->
-<!--  height: 2px;-->
-<!--  width: 80px;-->
-<!--  background-color: #2c81db;-->
-<!--  transition: all 250ms;-->
-<!--}-->
-<!--</style>-->
+.l-tabs-nav-bar {
+  position: absolute;
+  height: 2px;
+  background-color: #2c81db;
+  transition: all 250ms;
+}
+</style>

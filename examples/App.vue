@@ -50,6 +50,18 @@
   </div>
   <div>{{ a }}</div>
   <br>
+<!--  <l-dialog :headerIcon="['iconfont icon-d','#f60']" title="创建组件">-->
+<!--    <l-button theme="success" icon="iconfont icon-d" @click="handledClick" circle></l-button>-->
+<!--    <l-button theme="error" icon="iconfont icon-d" @click="handledClick" circle></l-button>-->
+<!--    <l-button theme="warning" icon="iconfont icon-bianji1" @click="handledClick" circle></l-button>-->
+<!--    <l-button theme="primary" icon="iconfont icon-tubiaozhizuomoban" @click="handledClick" circle></l-button>-->
+<!--    <l-button theme="subordination" icon="iconfont icon-jigui" @click="handledClick" circle></l-button>-->
+<!--    <l-button theme="dark" icon="iconfont icon-shebeijieruwangguanxinxi" @click="handledClick" circle></l-button>-->
+<!--    <template v-slot:footer>-->
+<!--      <l-button theme="error" icon="iconfont icon-d" @click="handledClick" circle></l-button>-->
+<!--      <l-button theme="success" icon="iconfont icon-d" @click="handledClick" circle></l-button>-->
+<!--    </template>-->
+<!--  </l-dialog>-->
 </template>
 <script>
 
@@ -101,5 +113,10 @@ export default {
   float: left;
   width: 400px;
   margin: 0 10px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
 }
 </style>

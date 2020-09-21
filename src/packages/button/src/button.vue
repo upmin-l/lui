@@ -12,7 +12,7 @@
   </button>
 </template>
 
-<script lang="ts">
+<script >
 import {defineComponent, computed, ref} from 'vue'
 
 export default defineComponent(
@@ -28,7 +28,7 @@ export default defineComponent(
         icon: [String, Array],
         circle: Boolean
       },
-      setup(props: any, context: any) {
+      setup(props, context) {
         const is_after = ref(false)
         const is_computeTheme = computed(() => {
           if (!props.circle) {
@@ -46,10 +46,10 @@ export default defineComponent(
           const is_sizeRes = ['bin', 'mini'].find(item => props.size === item)
           return is_sizeRes ? `l-button-${is_sizeRes}` : ''
         })
-        const onAnimationend = (e: MouseEvent) => {
+        const onAnimationend = (e) => {
           is_after.value = false;
         }
-        const onClick = (e: MouseEvent) => {
+        const onClick = (e) => {
           if (props.disabled) {
             e.preventDefault()
           }

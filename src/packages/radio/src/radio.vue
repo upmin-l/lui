@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {defineComponent,toRefs, getCurrentInstance, computed} from "vue"
+import {defineComponent, toRefs, getCurrentInstance, computed} from "vue"
 
 export default defineComponent(
     {
