@@ -19,8 +19,7 @@
     "build:pro": "webpack --config build/webpack.prod.js"
   },
   "dependencies": {
-    "typescript": "^4.0.2",
-    "vue": "^3.0.0-rc.1"
+    "typescript": "^4.0.2"
   },
   "peerDependencies": {
     "vue": ">=^3.0.0-rc.1"

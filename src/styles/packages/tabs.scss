@@ -1,0 +1,61 @@
+@import "../constant/const";
+@import "../mixtures/mixture";
+
+@include modifier(tabs) {
+  position: relative;
+  overflow: hidden;
+  color: #515a6e;
+  zoom: 1;
+}
+@include modifier(tabs-nav){
+  display: flex;
+  width: 100%;
+}
+@include modifier(tabs-nav-item){
+  height: 100%;
+  margin-right: 15px;
+  padding: 12px 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .3s cubic-bezier(.645, .045, .355, 1);
+}
+@include modifier(tabs-content){
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+  @include is-when(tabs--nav-active){
+    color: #2c81db;
+  }
+}
+@include modifier(tabs-item){
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+  font-size: 15px;
+  line-height: 28px;
+  width: 0;
+  transform: scale(0.9);
+  transition: all .3s ease-in;
+  filter: blur(2px);
+  z-index: 9;
+  @include is-when(tabs--active){
+    height: auto;
+    overflow: auto;
+    transition-delay: 250ms;
+    width: auto;
+    opacity: 1;
+    filter: blur(0);
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+@include modifier(tabs-nav-bar){
+  position: absolute;
+  height: 2px;
+  background-color: #2c81db;
+  transition: all 250ms;
+}
