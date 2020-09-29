@@ -1,17 +1,24 @@
 const path = require('path');
 const {merge} = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.js');
+const components = require('../components.json');
 
+const basePath = path.resolve(__dirname, '../');
+
+let entries = {};
+
+
+Object.keys(components).forEach(key => {
+    entries[key] = path.join(basePath, components[key]);
+});
 module.exports = merge(webpackBaseConfig, {
     mode: "production",
-    entry: {
-        main: path.resolve(__dirname, '../src/index.js'),
-    },
+    entry: entries,
     output: {
         path: path.resolve(__dirname, '../bag'),
         publicPath: '/bag/',
-        filename: 'index.js',
-        library: 'lui',
+        filename: '[name].js',
+        chunkFilename: '[id].js',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

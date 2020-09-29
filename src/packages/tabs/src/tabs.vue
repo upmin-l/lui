@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import {defineComponent, onMounted, ref, watchEffect} from "vue"
 import tabItem from "./tabItem.vue";
@@ -36,7 +36,7 @@ export default defineComponent(
           default: 'top'
         }
       },
-      setup(props, context) {
+      setup(props: any, context: any) {
         const defaults = context.slots.default();
         const selectedItem = ref();
         const indicator = ref();
@@ -68,8 +68,7 @@ export default defineComponent(
           })
         })
 
-
-        const handledTabsClick = (e, val) => {
+        const handledTabsClick = (e: Event, val: any) => {
           context.emit('update:value', val.props.name)
           context.emit("tabsClick", e, val.props.name)
         }

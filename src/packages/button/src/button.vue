@@ -12,7 +12,7 @@
   </button>
 </template>
 
-<script >
+<script lang="ts">
 import {defineComponent, computed, ref} from 'vue'
 
 export default defineComponent(
@@ -28,7 +28,7 @@ export default defineComponent(
         icon: [String, Array],
         circle: Boolean
       },
-      setup(props, context) {
+      setup(props: any, context: any) {
         const is_after = ref(false)
         const is_computeTheme = computed(() => {
           if (!props.circle) {

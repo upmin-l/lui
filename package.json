@@ -15,8 +15,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:style": "gulp --gulpfile build/build-styles.ts",
-    "build:pro": "webpack --config build/webpack.prod.js"
+    "build:style": "gulp --gulpfile build/build-styles.js",
+    "build:pro": "webpack --config build/webpack.prod.js",
+    "build:component": "webpack --config build/webpack.component.js"
   },
   "dependencies": {
     "typescript": "^4.0.2",

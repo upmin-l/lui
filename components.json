@@ -1,0 +1,7 @@
+{
+  "button": "src/packages/button/index.js",
+  "dialog": "src/packages/dialog/index.js",
+  "tabs": "src/packages/tabs/index.js",
+  "switch": "src/packages/switch/index.js",
+  "radio": "src/packages/radio/index.js"
+}

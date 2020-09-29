@@ -1,38 +1,30 @@
 <template>
-
+  <div>
+    <l-button theme="success">确定</l-button>
+    <l-button theme="primary">确定</l-button>
+    <l-button theme="subordination">确定</l-button>
+    <l-button theme="error">确定</l-button>
+    <l-button theme="error">确定</l-button>
+    <br>
+    <l-radio v-model:value="radio1" label="1">确定</l-radio>
+    <l-radio v-model:value="radio1" label="2">确定</l-radio>
+  </div>
 </template>
 <script>
-
-import {computed, ref} from 'vue'
+import {ref} from 'vue'
 
 export default {
   name: 'App',
-
-
-  setup(props, context) {
-
-    return {
-
+  setup() {
+    const radio1 = ref();
+    return{
+      radio1
     }
   }
-
 }
 </script>
 <style>
-.a-block-box {
-  width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.block-box {
-  float: left;
-  width: 400px;
-  margin: 0 10px;
-}
-
-p {
-  padding: 0;
-  margin: 0;
+#app {
+  text-align: center;
 }
 </style>

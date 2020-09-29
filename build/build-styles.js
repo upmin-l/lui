@@ -5,7 +5,7 @@ const autoPreFixer = require('gulp-autoprefixer');
 const del = require('del');
 const rename = require('gulp-rename');
 const cssMin = require('gulp-cssmin');
-
+const components = require('../components.json');
 
 let paths = {
     styles: {
@@ -36,8 +36,24 @@ function is_watch() {
     watch(paths.styles.src, compile)
 }
 
-let build = series(clean, parallel(compile, copyFont));
+//todo gulp不支持ts？？？？
+function buildSegregateCss(v) {
+    Object.keys(components).forEach(compName => {
+        src(`../src/styles/packages/${compName}.scss`)
+            .pipe(sass.sync())
+            .pipe(autoPreFixer({
+                browsers: ['last 2 versions', 'ie>9']
+            }))
+            // .pipe(cssMin())
+            .pipe(rename(`${compName}.css`))
+            .pipe(dest('../bag/styles'));
+    })
+    v()
+}
+
+let build = series(clean, parallel(compile, copyFont, buildSegregateCss));
 exports.compile = compile;
 exports.is_watch = is_watch;
 exports.copyFont = copyFont;
+exports.buildSegregateCss = buildSegregateCss;
 exports.default = build;
