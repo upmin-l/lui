@@ -1,7 +1,7 @@
 {
   "name": "lui",
   "version": "0.0.1",
-  "description": "A vue3.0+ based UI component library",
+  "description": "A vue3.0 + based UI component library",
   "license": "MIT",
   "author": {
     "name": "upmin-l"

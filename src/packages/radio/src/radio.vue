@@ -25,8 +25,8 @@ export default defineComponent(
       setup(props, context) {
         const {value, label} = toRefs(props);
         const modelValue = manageModel(value)
+        console.log(modelValue);
         const radioChange = () => {
-          console.log(value);
           context.emit("update:value", value)
         }
 
@@ -38,13 +38,15 @@ export default defineComponent(
     }
 )
 
-function manageModel(modelValue) {
-  const {emit} = getCurrentInstance();
+function manageModel(modelValue: string | number | boolean) {
+  const {emit}: any = getCurrentInstance();
   const model = computed({
     get() {
+      console.log(modelValue);
       return unref(modelValue)
     },
     set(val) {
+      console.log(val);
       emit("update:value", val)
     }
   })

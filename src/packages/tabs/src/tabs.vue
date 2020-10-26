@@ -1,5 +1,5 @@
 <template>
-  <div class="l-tabs">
+  <div class="l-tabs" :style="{width:width,minHeight:height}">
     <div class="l-tabs-nav-bar" ref="indicator"></div>
     <div class="l-tabs-nav" ref="navBox">
       <div class="l-tabs-nav-item"
@@ -34,6 +34,14 @@ export default defineComponent(
         theme: {
           type: String,
           default: 'top'
+        },
+        width: {
+          type: String,
+          default:'500px'
+        },
+        height: {
+          type:String,
+          default:'200px'
         }
       },
       setup(props: any, context: any) {
@@ -45,6 +53,7 @@ export default defineComponent(
         let newLabel = null;
         let newName = null;
         if (Array.isArray(props.data) && props.data.length >= 0) {
+
         } else {
           throw new Error('the "data" must be an array of length greater than 1')
         }
@@ -68,8 +77,14 @@ export default defineComponent(
           })
         })
 
+        /**
+         * @param  e:事件
+         * @param val 选项卡值
+         * @date 2020年10月19日15:49:45
+         ***/
         const handledTabsClick = (e: Event, val: any) => {
           context.emit('update:value', val.props.name)
+
           context.emit("tabsClick", e, val.props.name)
         }
 
