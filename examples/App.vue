@@ -3,7 +3,7 @@
     <l-button theme="success" @click="handledClick">确定</l-button>
     <l-button theme="primary" @click="handledRefClick">确定</l-button>
     <l-button theme="subordination">确定</l-button>
-    <l-button theme="error">确定</l-button>
+    <l-button size="mini" theme="error">确定按鈕</l-button>
     <l-button theme="warning">确定</l-button>
     <br>
     <l-radio v-model:value="radio1" label="1">确定</l-radio>
@@ -37,10 +37,43 @@
       <l-button theme="warning">确定</l-button>
     </l-dialog>
     <div ref="box">12312</div>
+    <!--    <l-alert theme="error" closable showIcon icon="icon-bianji1" rear-content="知道了"-->
+    <!--             @close="handledTabsClick">-->
+    <!--      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。-->
+    <!--        <l-button theme="error" size="mini">确定</l-button>-->
+    <!--      </template>-->
+    <!--    </l-alert>-->
+    <l-alert theme="warning" closable showIcon icon="icon-bianji1" @close="handledTabsClick">
+      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。
+        <l-button icon="iconfont icon-bianji1" theme="success" circle></l-button>
+      </template>
+      <template v-slot:rearContent>
+        <l-button theme="success">确定</l-button>
+      </template>
+    </l-alert>
+    <l-alert closable title="可以完整的使用上述的computed等强大的Vue3能力" rear-content="知道了"></l-alert>
+    <!--    <l-alert theme="subordination" closable showIcon icon="icon-bianji1" @close="handledTabsClick">-->
+    <!--      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。</template>-->
+    <!--    </l-alert>-->
+    <!--    <l-alert theme="primary" closable showIcon icon="icon-bianji1"-->
+    <!--             content-text="可以完整的使用上述的computed等强大的Vue3能力" @close="handledTabsClick">-->
+    <!--      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。-->
+    <!--        <l-button theme="subordination" size="mini">确定</l-button>-->
+    <!--      </template>-->
+
+    <!--      <template v-slot:rearContent>-->
+    <!--        <l-button theme="success">确定</l-button>-->
+    <!--      </template>-->
+    <!--    </l-alert>-->
+    <!--    <l-alert title="可以完整的使用上述的computed等强大的Vue3能力"-->
+    <!--             content-text="可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力"-->
+    <!--             rear-content="知道了" theme="success" closable showIcon icon="icon-bianji1"-->
+    <!--             @close="handledTabsClick">-->
+    <!--    </l-alert>-->
   </div>
 </template>
 <script>
-import {ref,onMounted} from 'vue'
+import {ref, onMounted} from 'vue'
 
 export default {
   name: 'App',
@@ -52,16 +85,17 @@ export default {
     const handledTabsClick = (val, name) => {
       console.log(val, name);
     }
-    onMounted(()=>{
+    onMounted(() => {
       console.log(box.value)
     })
-    const handledClick = (e)=>{
+    const handledClick = (e) => {
       console.log(e);
       dialog.value = !dialog.value
     }
-    function handledRefClick(){
+
+    function handledRefClick() {
       box.value.innerText = '12';
-      box.value.onclick = (e)=>{
+      box.value.onclick = (e) => {
         console.log(e);
       }
       console.log(box.value.innerText);

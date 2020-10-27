@@ -1,0 +1,45 @@
+@import "../constant/const";
+@import "../mixtures/mixture";
+
+@include BEM(alert) {
+  position: relative;
+  width: 100%;
+  //padding:15px;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  transition: opacity .2s;
+}
+@include BEM(alert-icon){
+  font-size: 16px;
+}
+@include element-separator(alert,bin){
+  font-size: 24px;
+}
+@include BEM(alert-content){
+  display: inline-block;
+  width: 90%;
+  padding: 0 10px;
+}
+@include BEM(alert-rear){
+  position: absolute;
+  right:2%;
+  top: 35%;
+  cursor: pointer;
+  padding: 0 3px;
+}
+@include BEM(alert-title){
+  font-weight: 800;
+  font-size: 14px;
+}
+
+@each $color in $colors {
+  @include element-separator(alert, $color) {
+    background-color: mix($-default-, map-get($map, $color), 80%);
+    color: mix($-black-, map-get($map, $color), 15%);
+  }
+}

@@ -21,6 +21,15 @@ $l: '';
   }
 }
 
+@mixin element-separator($what,$type) {
+  @at-root {
+    &.#{$prefixName+$modifier-separator+$what+$element-separator+$type} {
+      @content
+    }
+  }
+}
+
+
 /* separator */
 @mixin modifier($modifier) {
   $currentSelector: ".";

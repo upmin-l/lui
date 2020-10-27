@@ -18,7 +18,7 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
 import {defineComponent, computed, toRefs} from "vue"
 
 export default defineComponent(

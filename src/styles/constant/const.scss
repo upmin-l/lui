@@ -1,14 +1,16 @@
 /*主颜色*/
 $-default-: #fff;
+//695efb
 $-Primary-: #009af3;
 $-succeed-: #19be6b;
 $-subordination-: #3f51b5;
 $-error-: #ED213A;
-$-warning-: #ff9900;
+$-warning-: #f5e035;
 $-black-: #1e1e1e;
 $-dark-: #314158;
 $-default-font-: #7f8280;
 $-font-size-default: 14px !default;
+
 
 /*button 状态 颜色*/
 $-button-default-color: $-default-;
@@ -51,12 +53,13 @@ $-active-color-dark: mix($-button-black-color, $-button-dark-color, 10%) !defaul
 
 /*大小*/
 /*mini*/
-$-button-mini-up-down: 6px;
-$-button-mini-left-right: 8px;
+$-button-mini-up-down: 4px;
+$-button-mini-left-right: 6px;
 $-button-mini-font: 12px;
 
 $-button-bin-up-down: 10px;
 $-button-bin-left-right: 14px;
+
 $-button-bin-font: 14px;
 
 //#6b95bf
@@ -107,7 +110,7 @@ $button-dark-border-color: $-button-dark-color;
 
 $switch-width: 44px !default;
 $switch-height: 22px !default;
-$switch-after-size:18px;
+$switch-after-size: 18px;
 $switch-border-radius: 100px !default;
 $switch-font-size: $-font-size-default;
 
@@ -116,7 +119,11 @@ $switch-font-size: $-font-size-default;
 
 $radio-line-height: 16px;
 $radio-font-size: $-font-size-default;
-$radio-margin:0 10px 5px 0 !default;
-$radio-inner-margin:5px;
-$radio-inner-before-size:8px;
-$radio-inner-background:$-Primary- !default;
+$radio-margin: 0 10px 5px 0 !default;
+$radio-inner-margin: 5px;
+$radio-inner-before-size: 8px;
+$radio-inner-background: $-Primary- !default;
+
+/****************************alert**********************/
+$colors: primary, success, subordination, error, warning, dark;
+$map: (primary: $-Primary-, success: $-succeed-, subordination:$-subordination-, error:$-error-, warning:$-warning-, dark:$-dark-);
