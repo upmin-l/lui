@@ -71,7 +71,7 @@
              @close="handledTabsClick">
     </l-alert>
     <l-select width="300">
-      <l-option v-for="(item,index) of option" :key="index">{{item.job}}</l-option>
+      <l-option v-for="(item,index) of option" :img-url="item.icon" :key="index">{{item.job}}</l-option>
       <l-option icon="iconfont icon-bianji1">
 <!--        <img  src="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"  alt="">-->
         123
@@ -121,7 +121,8 @@ export default {
       {
         id: 2,
         age:17,
-        job:'设计'
+        icon:'https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar',
+        job:'设计撒打算打算打算打算热热热若翁认为热无若翁'
       },
     ]
     let show = ref(false)

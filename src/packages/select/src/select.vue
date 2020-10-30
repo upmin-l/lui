@@ -6,8 +6,8 @@
       </label>
       <span class="l-select-icon iconfont icon-bianji1"></span>
     </div>
-    <div class="l-select-dropdown-box">
-      <div v-show="controlList" class="l-select-list">
+    <div :class="computedStyle" class="l-select-dropdown-box">
+      <div class="l-select-list">
         <ul>
           <component v-for="(item,index) of defaults" :key="index" :is="item"></component>
         </ul>
@@ -18,7 +18,7 @@
 
 <script>
 import focus from '../../../utils/directives/select_directive'
-import {ref} from "vue"
+import {ref, computed} from "vue"
 
 export default {
   name: "lSelect",
@@ -40,10 +40,19 @@ export default {
       context.emit('focus', el);
     }
 
+    const computedStyle = computed(() => {
+      // if (controlList.value) {
+      //   return 'move fadeInUp'
+      // }else {
+      //   return 'move fadeOut'
+      //
+      // }
+    })
     return {
       defaults,
       onFocus,
-      controlList
+      controlList,
+      computedStyle
     }
   }
 }
@@ -97,6 +106,7 @@ export default {
 }
 
 .l-select-dropdown-box {
+  display: none;
   position: absolute;
   overflow: auto;
   min-width: 200px;
@@ -110,6 +120,9 @@ export default {
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   margin: 5px 0;
+  /*opacity: 0;*/
+  /*transform: translateZ(0) translateY(-20px);*/
+  /*transition: opacity 0.35s, transform 0.35s, visibility 0.35s 0s;*/
 }
 
 .l-select-list {
