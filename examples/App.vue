@@ -2,7 +2,7 @@
   <div>
     <l-button theme="success" @click="handledClick">确定</l-button>
     <l-button theme="primary" @click="handledRefClick">确定</l-button>
-    <l-button theme="subordination">确定</l-button>
+    <l-button theme="subordination" @click="add">确定</l-button>
     <l-button size="mini" theme="error">确定按鈕</l-button>
     <l-button theme="warning">确定</l-button>
     <br>
@@ -37,12 +37,12 @@
       <l-button theme="warning">确定</l-button>
     </l-dialog>
     <div ref="box">12312</div>
-    <!--    <l-alert theme="error" closable showIcon icon="icon-bianji1" rear-content="知道了"-->
-    <!--             @close="handledTabsClick">-->
-    <!--      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。-->
-    <!--        <l-button theme="error" size="mini">确定</l-button>-->
-    <!--      </template>-->
-    <!--    </l-alert>-->
+    <l-alert theme="error" closable showIcon icon="icon-bianji1" rear-content="知道了"
+             @close="handledTabsClick">
+      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。
+        <l-button theme="error" size="mini">确定</l-button>
+      </template>
+    </l-alert>
     <l-alert theme="warning" closable showIcon icon="icon-bianji1" @close="handledTabsClick">
       <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。
         <l-button icon="iconfont icon-bianji1" theme="success" circle></l-button>
@@ -52,24 +52,34 @@
       </template>
     </l-alert>
     <l-alert closable title="可以完整的使用上述的computed等强大的Vue3能力" rear-content="知道了"></l-alert>
-    <!--    <l-alert theme="subordination" closable showIcon icon="icon-bianji1" @close="handledTabsClick">-->
-    <!--      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。</template>-->
-    <!--    </l-alert>-->
-    <!--    <l-alert theme="primary" closable showIcon icon="icon-bianji1"-->
-    <!--             content-text="可以完整的使用上述的computed等强大的Vue3能力" @close="handledTabsClick">-->
-    <!--      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。-->
-    <!--        <l-button theme="subordination" size="mini">确定</l-button>-->
-    <!--      </template>-->
+    <l-alert theme="subordination" closable showIcon icon="icon-bianji1" @close="handledTabsClick">
+      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。</template>
+    </l-alert>
+    <l-alert theme="primary" closable showIcon icon="icon-bianji1"
+             content-text="可以完整的使用上述的computed等强大的Vue3能力" @close="handledTabsClick">
+      <template v-slot:title>可以完整的使用上述的computed等强大的Vue3能力。
+        <l-button theme="subordination" size="mini">确定</l-button>
+      </template>
 
-    <!--      <template v-slot:rearContent>-->
-    <!--        <l-button theme="success">确定</l-button>-->
-    <!--      </template>-->
-    <!--    </l-alert>-->
-    <!--    <l-alert title="可以完整的使用上述的computed等强大的Vue3能力"-->
-    <!--             content-text="可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力"-->
-    <!--             rear-content="知道了" theme="success" closable showIcon icon="icon-bianji1"-->
-    <!--             @close="handledTabsClick">-->
-    <!--    </l-alert>-->
+      <template v-slot:rearContent>
+        <l-button theme="success">确定</l-button>
+      </template>
+    </l-alert>
+    <l-alert title="可以完整的使用上述的computed等强大的Vue3能力"
+             content-text="可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力,可以完整的使用上述的computed等强大的Vue3能力"
+             rear-content="知道了" theme="success" closable showIcon icon="icon-bianji1"
+             @close="handledTabsClick">
+    </l-alert>
+    <l-select width="300">
+      <l-option v-for="(item,index) of option" :key="index">{{item.job}}</l-option>
+      <l-option icon="iconfont icon-bianji1">
+<!--        <img  src="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"  alt="">-->
+        123
+      </l-option>
+      <l-option img-url="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar">4444</l-option>
+      <l-option  img-url="../public/favicon.ico">4444</l-option>
+    </l-select>
+    <div v-show="show">奇怪奇怪骑过去</div>
   </div>
 </template>
 <script>
@@ -102,6 +112,22 @@ export default {
 
     }
 
+    let option = [
+      {
+        id: 1,
+        age:15,
+        job:'前端'
+      },
+      {
+        id: 2,
+        age:17,
+        job:'设计'
+      },
+    ]
+    let show = ref(false)
+    function add(){
+      show.value = !show.value
+    }
     return {
       radio1,
       activeName,
@@ -109,7 +135,10 @@ export default {
       handledTabsClick,
       handledClick,
       box,
-      handledRefClick
+      handledRefClick,
+      option,
+      add,
+      show
     }
   }
 }

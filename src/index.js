@@ -5,6 +5,9 @@ import {default as lTabs} from "./packages/tabs"
 import {lTabsItem} from "./packages/tabs"
 import lDialog from "./packages/dialog";
 import lAlert from "./packages/alert";
+import lSelect from "./packages/select"
+import lOption from "./packages/option"
+
 const components = [
     lSwitch,
     lButton,
@@ -12,7 +15,9 @@ const components = [
     lTabs,
     lDialog,
     lTabsItem,
-    lAlert
+    lAlert,
+    lSelect,
+    lOption
 ];
 
 const install = function (Vue) {
@@ -27,6 +32,8 @@ export {
     lTabs,
     lDialog,
     lTabsItem,
-    lAlert
+    lAlert,
+    lSelect,
+    lOption
 }
 export default install
