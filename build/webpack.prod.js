@@ -23,4 +23,23 @@ module.exports = merge(webpackBaseConfig, {
             amd: 'vue'
         }
     },
+    module: {
+        rules: [
+            {
+                test: /\.(jsx?|babel|es6)$/,
+                include: process.cwd(),
+                exclude: /node_modules|utils\/popper\.js|utils\/date\.js/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    compilerOptions: {
+                        preserveWhitespace: false
+                    }
+                }
+            }
+        ]
+    },
 });

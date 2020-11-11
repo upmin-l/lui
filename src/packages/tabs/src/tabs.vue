@@ -20,7 +20,7 @@
 <script lang="ts">
 
 import {defineComponent, onMounted, ref, watchEffect} from "vue"
-import tabItem from "./tabItem.vue";
+import tabItem from "../../tabItem/src/tabItem.vue";
 
 export default defineComponent(
     {
@@ -57,7 +57,7 @@ export default defineComponent(
         } else {
           throw new Error('the "data" must be an array of length greater than 1')
         }
-        defaults.map((v) => {
+        defaults.map((v:any) => {
           if (v.type !== tabItem) {
             throw new Error('parse component failed, "tabs" component expect "<l-tab-item>"')
           }

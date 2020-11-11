@@ -4,11 +4,12 @@ import App from './App.vue'
 import './index.css'
 // import './assets/css/index.scss'
 import '../bag/styles/index.css'
-import m from '../src/index'
+
 
 const Vue = createApp(App);
-// Vue.use(router);
+import m from '../src/index'
 Vue.use(m);
+// Vue.use(router);
 Vue.mount("#app");
 
 

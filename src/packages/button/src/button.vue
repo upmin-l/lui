@@ -46,10 +46,10 @@ export default defineComponent(
           const is_sizeRes = ['bin', 'mini'].find(item => props.size === item)
           return is_sizeRes ? `l-button-${is_sizeRes}` : ''
         })
-        const onAnimationend = (e) => {
+        const onAnimationend = () => {
           is_after.value = false;
         }
-        const onClick = (e) => {
+        const onClick = (e:MouseEvent) => {
           if (props.disabled) {
             e.preventDefault()
           }

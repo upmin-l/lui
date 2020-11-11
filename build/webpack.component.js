@@ -13,14 +13,15 @@ Object.keys(components).forEach(key => {
 });
 module.exports = merge(webpackBaseConfig, {
     mode: "production",
-    entry: entries,
+    entry: components,
     output: {
         path: path.resolve(__dirname, '../bag'),
         publicPath: '/bag/',
         filename: '[name].js',
         chunkFilename: '[id].js',
-        libraryTarget: 'umd',
-        umdNamedDefine: true
+        umdNamedDefine: true,
+        libraryTarget: 'commonjs2'
+
     },
     externals: {
         vue: {
@@ -29,5 +30,24 @@ module.exports = merge(webpackBaseConfig, {
             commonjs2: 'vue',
             amd: 'vue'
         }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(jsx?|babel|es6)$/,
+                include: process.cwd(),
+                exclude: /node_modules|utils\/popper\.js|utils\/date\.js/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    compilerOptions: {
+                        preserveWhitespace: false
+                    }
+                }
+            }
+        ]
     },
 });

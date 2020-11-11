@@ -2,6 +2,10 @@
   "button": "src/packages/button/index.js",
   "dialog": "src/packages/dialog/index.js",
   "tabs": "src/packages/tabs/index.js",
+  "tabItem": "src/packages/tabitem/index.js",
   "switch": "src/packages/switch/index.js",
-  "radio": "src/packages/radio/index.js"
+  "radio": "src/packages/radio/index.js",
+  "alert": "src/packages/alert/index.js",
+  "option": "src/packages/option/index.js",
+  "select": "src/packages/select/index.js"
 }

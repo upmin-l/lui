@@ -46,9 +46,15 @@ export default defineComponent(
       },
       setup(props, context) {
         const {clickModalClose} = toRefs(props);
+
+        interface is_style {
+          width: string | number;
+          marginTop: string | number
+        }
+
         const computedMainSize = computed(() => {
-          const style = {};
-          style.width = props.width || 30 + '%';
+          let style = <is_style>{};
+          style.width = props.width as string || 30 + '%';
           style.marginTop = props.top || 15 + "vh";
           return style
         })

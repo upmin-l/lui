@@ -6,7 +6,7 @@ const del = require('del');
 const rename = require('gulp-rename');
 const cssMin = require('gulp-cssmin');
 const components = require('../components.json');
-
+const chalk = require("chalk")
 let paths = {
     styles: {
         src: '../src/styles/**/*.scss',
@@ -16,10 +16,11 @@ let paths = {
 const url = '../src/styles/index.scss';
 
 function clean() {
-    return del(['lib'])
+    return del(['bag/styles'])
 }
 
 function compile() {
+    console.log(chalk.green.bgRed(`=   正在编译scss！ =`))
     return src(url).pipe(sass.sync()).pipe(autoPreFixer({
         browsers: ['last 2 versions', 'ie>9']
     }))
@@ -50,10 +51,11 @@ function buildSegregateCss(v) {
     })
     v()
 }
+// buildSegregateCss
+let build = series(clean, parallel(compile, copyFont,));
 
-let build = series(clean, parallel(compile, copyFont, buildSegregateCss));
 exports.compile = compile;
 exports.is_watch = is_watch;
 exports.copyFont = copyFont;
-exports.buildSegregateCss = buildSegregateCss;
+// exports.buildSegregateCss = buildSegregateCss;
 exports.default = build;
