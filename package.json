@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "build:init": "yarn || npm i",
     "build:style": "gulp --gulpfile build/build-styles.js",
     "build:pro": "webpack --config build/webpack.prod.js",
     "build:entry": "node build/build-entry-file.js",

@@ -7,5 +7,6 @@
   "radio": "src/packages/radio/index.js",
   "alert": "src/packages/alert/index.js",
   "option": "src/packages/option/index.js",
-  "select": "src/packages/select/index.js"
+  "select": "src/packages/select/index.js",
+  "loading": "src/packages/loading/index.js"
 }

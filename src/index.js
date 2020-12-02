@@ -8,6 +8,7 @@ import Radio from '../src/packages/radio/index.js';
 import Alert from '../src/packages/alert/index.js';
 import Option from '../src/packages/option/index.js';
 import Select from '../src/packages/select/index.js';
+import Loading from '../src/packages/loading/index.js';
 const components = [
     Button,
 Dialog,
@@ -17,7 +18,8 @@ Switch,
 Radio,
 Alert,
 Option,
-Select
+Select,
+Loading
 ]
 const install = function (Vue) {
     components.map(v => {
@@ -33,6 +35,7 @@ Switch,
 Radio,
 Alert,
 Option,
-Select
+Select,
+Loading
 }
 export default install

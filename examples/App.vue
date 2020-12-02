@@ -16,8 +16,14 @@
           cliche. Meggings fap leggings slow-carb kickstarter, health goth gastropub hashtag blue bottle photo booth
           literally PBR&B iPhone ugh. Organic scenester truffaut pug, pitchfork man bun artisan brooklyn photo booth.
           Biodiesel farm-to-table 8-bit direct trade humblebrag, man braid blue bottle.</p>
+        <l-loading theme="circle" content-text="正在加载"></l-loading>
+
       </l-tab-item>
       <l-tab-item label="标签5646546542" name="2">
+        <l-loading >
+
+        </l-loading>
+
         <p>
           不得不承认，computed这个强大功能的实现果然少不了内部非常复杂的实现，这个双向依赖收集的套路相信也会给各位小伙伴带来很大的启发。跟着尤大学习，果然有肉吃！
           另外由于@vue/reactivity的框架无关性，我把它整合进了React，做了一个状态管理库，可以完整的使用上述的computed等强大的Vue3能力。
@@ -81,6 +87,8 @@
     </l-select>
     <div v-show="show">奇怪奇怪骑过去</div>
   </div>
+
+
 </template>
 <script>
 import {ref, onMounted} from 'vue'

@@ -40,7 +40,6 @@ ComponentNames.forEach(item => {
     }))
 })
 
-console.log(includeComponentTemplate);
 const template = renderString(MAIN_TEMPLATE, {
     filePath: includeComponentTemplate.join(endOfLine),
     install: installTemplate.join(',' + endOfLine)

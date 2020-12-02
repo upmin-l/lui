@@ -39,3 +39,37 @@
     opacity: 0;
   }
 }
+@keyframes rotate {
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@keyframes bounce {
+  0%,100%{
+    transform: scale(.2);
+  }
+  50%{
+    transform: scale(1);
+  }
+}
+
+
+//loading
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader-inner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+////loading end
+
