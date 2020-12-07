@@ -19,7 +19,7 @@
   height: 40px;
   border-radius: 50%;
   background: rgb(63, 249, 220);
-  background: linear-gradient(0deg, rgba(63, 249, 220, 0.1) 33%, rgba(63, 249, 220, 1) 100%);
+  background: linear-gradient(0deg, rgba(0, 154, 243, .1) 33%, rgba(0, 154, 243, .2) 100%);
   animation: loader-rotate .8s linear 0s infinite;
   &:before {
     position: absolute;
@@ -37,6 +37,39 @@
 @include BEM(loading-icon) {
   position: absolute;
   text-align: center;
-  left: calc(50% - 20px);
-  top: calc(50% - 20px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@include BEM(loading__spin) {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  animation: rotate 2.0s infinite linear;
+}
+%loading_temporary{
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  background-color: rgba($-Primary-, .2);
+  border-radius: 100%;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+@include BEM(loading-outer){
+  @extend %loading_temporary
+}
+@include BEM(loading-inner) {
+  @extend %loading_temporary
+}
+@include BEM(loading-inner-dot){
+  top: auto;
+  bottom: 0;
+  background-color: rgba($-dark-, .2);
+  animation-delay: -1.0s;
+}
+@include BEM(loading-text){
+  color: $-Primary-;
 }

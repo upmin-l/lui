@@ -20,7 +20,7 @@
 
       </l-tab-item>
       <l-tab-item label="标签5646546542" name="2">
-        <l-loading >
+        <l-loading content-text="正在加载...">
 
         </l-loading>
 
