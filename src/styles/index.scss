@@ -1,13 +1,19 @@
 
 [class^="l-"], [class*=" l-"] * {
-  padding: 0;
-  margin: 0;
+  padding: 0 ;
+  margin: 0 ;
   box-sizing: border-box;
   font-size: 14px;
+  list-style: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 *, *:after, *:before{
   box-sizing: border-box;
+}
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 @import "packages/button";
 @import "packages/switch";

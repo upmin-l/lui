@@ -6,6 +6,13 @@
     <l-button size="mini" theme="error">确定按鈕</l-button>
     <l-button theme="warning">确定</l-button>
     <br>
+    <div style="display:inline-block;width: 500px;height: 500px;background-color: #1aae63"
+         v-context-menu="menuData"></div>
+    <div style="display:inline-block;width: 500px;height: 500px;background-color: #f60">
+      <l-context-menu :data="menuData">
+
+      </l-context-menu>
+    </div>
     <l-radio v-model:value="radio1" label="1">确定</l-radio>
     <l-radio v-model:value="radio1" label="2">确定</l-radio>
     <l-tabs v-model:value="activeName" @tabsClick="handledTabsClick">
@@ -20,10 +27,6 @@
 
       </l-tab-item>
       <l-tab-item label="标签5646546542" name="2">
-        <l-loading content-text="正在加载...">
-
-        </l-loading>
-
         <p>
           不得不承认，computed这个强大功能的实现果然少不了内部非常复杂的实现，这个双向依赖收集的套路相信也会给各位小伙伴带来很大的启发。跟着尤大学习，果然有肉吃！
           另外由于@vue/reactivity的框架无关性，我把它整合进了React，做了一个状态管理库，可以完整的使用上述的computed等强大的Vue3能力。
@@ -77,18 +80,22 @@
              @close="handledTabsClick">
     </l-alert>
     <l-select width="300">
-      <l-option v-for="(item,index) of option" :img-url="item.icon" :key="index">{{item.job}}</l-option>
+      <l-option v-for="(item,index) of option" :img-url="item.icon" :key="index">{{ item.job }}</l-option>
       <l-option icon="iconfont icon-bianji1">
-<!--        <img  src="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"  alt="">-->
+        <!--        <img  src="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar"  alt="">-->
         123
       </l-option>
       <l-option img-url="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar">4444</l-option>
-      <l-option  img-url="../public/favicon.ico">4444</l-option>
+      <l-option img-url="../public/favicon.ico">4444</l-option>
     </l-select>
     <div v-show="show">奇怪奇怪骑过去</div>
+    <l-input></l-input>
   </div>
 
+  <div>
 
+
+  </div>
 </template>
 <script>
 import {ref, onMounted} from 'vue'
@@ -104,10 +111,9 @@ export default {
       console.log(val, name);
     }
     onMounted(() => {
-      console.log(box.value)
+      // console.log(box.value)
     })
     const handledClick = (e) => {
-      console.log(e);
       dialog.value = !dialog.value
     }
 
@@ -116,26 +122,56 @@ export default {
       box.value.onclick = (e) => {
         console.log(e);
       }
-      console.log(box.value.innerText);
-
     }
 
     let option = [
       {
         id: 1,
-        age:15,
-        job:'前端'
+        age: 15,
+        job: '前端'
       },
       {
         id: 2,
-        age:17,
-        icon:'https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar',
-        job:'设计撒打算打算打算打算热热热若翁认为热无若翁'
+        age: 17,
+        icon: 'https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar',
+        job: '设计撒打算打算打算打算热热热若翁认为热无若翁'
       },
     ]
     let show = ref(false)
-    function add(){
+
+    function add() {
       show.value = !show.value
+    }
+
+    let menuData = {
+      data: [
+        {
+          name: '前端',
+          icon: '',
+          children: [
+            {
+              name: '你好',
+              children:[
+                {
+                  name:'555'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name:'javascript',
+          icon: '',
+          children:[
+            {
+              name:'123'
+            }
+          ]
+        },
+        {
+          name:'scss'
+        }
+      ]
     }
     return {
       radio1,
@@ -147,7 +183,8 @@ export default {
       handledRefClick,
       option,
       add,
-      show
+      show,
+      menuData
     }
   }
 }

@@ -8,5 +8,7 @@
   "alert": "src/packages/alert/index.js",
   "option": "src/packages/option/index.js",
   "select": "src/packages/select/index.js",
-  "loading": "src/packages/loading/index.js"
+  "loading": "src/packages/loading/index.js",
+  "input": "src/packages/input/index.js",
+  "contextMenu": "src/packages/contextMenu/index,js"
 }
