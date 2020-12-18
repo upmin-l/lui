@@ -13,7 +13,8 @@ const contextMenuObj = {
         let offY;
         _node.ctx.$el.style.minWidth = '120px';
         _node.ctx.$el.style.display = 'none';
-        console.log(_node);
+        // console.log(_node);
+        // console.log({..._node.ctx.$slots});
         el.appendChild(_node.ctx.$el);
         el.addEventListener('contextmenu', function (el) {
             offX = el.pageX;
@@ -24,12 +25,12 @@ const contextMenuObj = {
             _node.ctx.$el.style.top = offY + 'px'
             _node.ctx.$el.style.opacity = 1
         });
-        el.addEventListener('click', function () {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+
             _node.ctx.$el.style.display = 'none';
         })
-        document.addEventListener('click', function () {
-            _node.ctx.$el.style.display = 'none';
-        })
+
     },
     updated(el) {
         console.log(el, 'updated');

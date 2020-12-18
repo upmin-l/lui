@@ -5,17 +5,18 @@
     <l-button theme="subordination" @click="add">确定</l-button>
     <l-button size="mini" theme="error">确定按鈕</l-button>
     <l-button theme="warning">确定</l-button>
+    <l-switch @change="handledContextClick" v-model:value="dialog"></l-switch>
     <br>
     <div style="display:inline-block;width: 500px;height: 500px;background-color: #1aae63"
          v-context-menu="menuData"></div>
     <div style="display:inline-block;width: 500px;height: 500px;background-color: #f60">
-      <l-context-menu :data="menuData">
+      <l-context-menu :data="menuData" @item-click="handledContextClick">
 
       </l-context-menu>
     </div>
     <l-radio v-model:value="radio1" label="1">确定</l-radio>
     <l-radio v-model:value="radio1" label="2">确定</l-radio>
-    <l-tabs v-model:value="activeName" @tabsClick="handledTabsClick">
+    <l-tabs v-model:value="activeName"  @tabsClick="handledTabsClick">
       <l-tab-item label="表情1" name="1">
         <p> Single-origin coffee tilde craft beer organic wolf. Plaid kickstarter vegan roof party vice, try-hard
           taxidermy truffaut small batch. PBR&B butcher helvetica, green juice craft beer kickstarter skateboard. +1
@@ -170,8 +171,16 @@ export default {
         },
         {
           name:'scss'
+        },
+        {
+          name:'查看网页源代码(N)'
         }
       ]
+    }
+    function handledContextClick(e,val){
+      console.log(123);
+      console.log(e);
+      console.log(val);
     }
     return {
       radio1,
@@ -184,7 +193,8 @@ export default {
       option,
       add,
       show,
-      menuData
+      menuData,
+      handledContextClick
     }
   }
 }
