@@ -27,7 +27,6 @@ const contextMenuObj = {
         });
         el.addEventListener('click', function (e) {
             e.preventDefault();
-
             _node.ctx.$el.style.display = 'none';
         })
 

@@ -1,10 +1,12 @@
 <template>
-  <div class="l-contextMenu-item" @mouseenter="handledMouseenter" @mouseleave="handledMouseleave">
-    <span style="padding-right: 8px">{{ is.name }}</span>
-    <i class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>
-    <ul v-show="hover" class="l-context-menu" v-if="Array.isArray(is.children)&&is.children.length>0">
+  <div :class="className" class="l-contextMenu-item" @mouseenter="handledMouseenter" @mouseleave="handledMouseleave">
+    <div class="l-context-menu-title">
+      <span style="padding-right: 8px">{{ is.name }}</span>
+      <i v-if="is.children" class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>
+    </div>
+    <ul v-show="hover"  class="l-context-menu" v-if="is.children">
       <li v-for="(item,index) of is.children">
-        <context-menu-item :is="item"></context-menu-item>
+        <context-sub-menu :is="item" :key="item.id"></context-sub-menu>
       </li>
     </ul>
   </div>
@@ -12,7 +14,6 @@
 
 <script>
 import {toRefs, computed, ref, nextTick} from "vue";
-import contextMenuItem from "./contextMenuItem.vue";
 
 export default {
   name: "contextSubMenu",
@@ -22,35 +23,41 @@ export default {
       default: {}
     }
   },
-  components: {contextMenuItem},
+  emits: ['item-click'],
   setup(props, ctx) {
     const {is} = toRefs(props);
-    let hover = ref(false)
+    let hover = ref(false);
+    const className =computed(()=>{
+      return{
+        'l-context-item__hover':hover.value
+      }
+    })
     const method = {
       handledMouseenter(e) {
         let target = e.target;
         let fromElement = e.fromElement;
         let lastChild = target.lastChild;
-        const {width} = lastChild.getBoundingClientRect()
+        const {width} = target.getBoundingClientRect();
         const {clientHeight, clientWidth} = target.offsetParent;
-        nextTick(() => {
-          hover = true
+        // target.parentNode.style.backgroundColor = '#ecf5ff'
+        // target.parentNode.style.color = '#409eff'
+        hover.value = true;
+        if (lastChild.style) {
           if (clientWidth + width > fromElement.clientWidth) {
-            lastChild.style.right = width + 'px'
+            lastChild.style.left = width + 'px';
+            lastChild.style.top = -8 + 'px';
           }
-          console.log(e);
-          console.log(lastChild);
-        })
-
+        }
       },
       handledMouseleave(e) {
-        hover = false
+        hover.value = false
       }
     }
     return {
       is,
       hover,
-      ...method
+      ...method,
+      className
     }
   }
 }
@@ -61,13 +68,19 @@ export default {
   padding: 1px 15px;
   line-height: 32px;
   cursor: pointer;
+  color: #333;
+
   transition: all 250ms;
 }
-
-.is_contextMenuSub {
-  display: none;
+.l-contextMenu-item  span{
+  color: #333;
 }
-
+.l-context-item__hover {
+  background-color: #ecf5ff;
+}
+.l-context-item__hover span{
+  color: #409eff ;
+}
 /*.l-position {*/
 /*  top: -8px;*/
 /*  right: -55px;*/

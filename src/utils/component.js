@@ -11,7 +11,7 @@ const COMPONENT_CONTAINER_SYMBOL = Symbol('l_component_container')
  * @param children
  */
 export function createComponent(Component, props, children) {
-    const v_node = h(Component, { ...props, ref: MOUNT_COMPONENT_REF }, children)
+    const v_node = h(Component, {...props}, children)
     const container = document.createElement('div')
     v_node[COMPONENT_CONTAINER_SYMBOL] = container
     render(v_node, container)

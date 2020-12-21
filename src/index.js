@@ -27,8 +27,14 @@ ContextMenu
 ]
 const install = function (Vue) {
     components.map(v => {
-        Vue.use(v)
+        Vue.component(v.name,v)
     })
+    Vue.component(ContextMenu.contextSubMenu.name,ContextMenu.contextSubMenu)
+    Vue.component(ContextMenu.contextMenu.name,ContextMenu.contextMenu)
+    Vue.use(ContextMenu.contextMenu_directive)
+}
+const lUi = {
+  install
 }
 export{
   Button,
@@ -44,4 +50,4 @@ Loading,
 Input,
 ContextMenu
 }
-export default install
+export default lUi
