@@ -9,7 +9,6 @@
 <script>
 
 import {toRefs} from "vue";
-
 export default {
   name: "lContextMenuItem",
   props: {
@@ -18,13 +17,13 @@ export default {
       default: {}
     }
   },
+  directives:{},
   emits: ['item-click'],
   setup(props, ctx) {
     const {is} = toRefs(props);
 
     function itemClick(e) {
       e.stopPropagation();
-      // ctx.emit('itemClick')
       ctx.emit('item-click',e,is);
     }
 

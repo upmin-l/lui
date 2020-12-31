@@ -24,7 +24,7 @@ function compile() {
     return src(url).pipe(sass.sync()).pipe(autoPreFixer({
         browsers: ['last 2 versions', 'ie>9']
     }))
-        // .pipe(cssMin())
+        .pipe(cssMin())
         .pipe(rename('index.css'))
         .pipe(dest('../bag/styles'))
 }
@@ -45,17 +45,17 @@ function buildSegregateCss(v) {
             .pipe(autoPreFixer({
                 browsers: ['last 2 versions', 'ie>9']
             }))
-            // .pipe(cssMin())
-            .pipe(rename(`${compName}.css`))
+            .pipe(cssMin())
+            .pipe(rename(`l-${compName}.css`))
             .pipe(dest('../bag/styles'));
     })
     v()
 }
 // buildSegregateCss
-let build = series(clean, parallel(compile, copyFont,));
+let build = series(clean, parallel(compile, copyFont,buildSegregateCss));
 
 exports.compile = compile;
 exports.is_watch = is_watch;
 exports.copyFont = copyFont;
-// exports.buildSegregateCss = buildSegregateCss;
+exports.buildSegregateCss = buildSegregateCss;
 exports.default = build;

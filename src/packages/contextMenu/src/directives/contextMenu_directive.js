@@ -27,6 +27,7 @@ const contextMenuObj = {
         });
         el.addEventListener('click', function (e) {
             e.preventDefault();
+            console.log(_node);
             _node.ctx.$el.style.display = 'none';
         })
 
@@ -39,5 +40,9 @@ const contextMenuObj = {
 export default {
     install(Vue) {
         Vue.directive('contextMenu', contextMenuObj)
+    },
+    abc(){
+        console.log(123);
     }
 }
+export const directive = contextMenuObj

@@ -30,8 +30,12 @@ const install = function (Vue) {
         Vue.component(v.name,v)
     })
     Vue.component(ContextMenu.contextSubMenu.name,ContextMenu.contextSubMenu)
+    Vue.component(Loading.loading.name,Loading.loading)
     Vue.component(ContextMenu.contextMenu.name,ContextMenu.contextMenu)
-    Vue.use(ContextMenu.contextMenu_directive)
+    Vue.use(ContextMenu.contextMenu_directive);
+    Vue.use(Loading.loading_directive);
+    Vue.config.globalProperties.$contextMenu = ContextMenu.contextMenu_directive
+
 }
 const lUi = {
   install

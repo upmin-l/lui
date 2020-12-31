@@ -25,7 +25,7 @@ export default defineComponent(
       setup(props, context) {
         const {value, label}:any = toRefs(props);
         const modelValue = manageModel(value)
-        console.log(modelValue);
+        // console.log(modelValue);
         const radioChange = () => {
           context.emit("update:value", value)
         }

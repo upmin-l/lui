@@ -1,6 +1,6 @@
 <template>
   <ul class="l-context-menu">
-    <li v-for="item in menuData" >
+    <li v-for="item in menuData">
       <context-sub-menu v-if="item.children"
                         :is="item">
       </context-sub-menu>
@@ -11,7 +11,7 @@
 <script>
 import contextMenuItem from "./contextMenuItem.vue";
 import contextSubMenu from "./contextSubMenu.vue";
-import {reactive, toRefs, getCurrentInstance, onMounted} from 'vue'
+import {reactive, toRefs} from 'vue'
 
 export default {
   name: "lContextMenu",
@@ -21,6 +21,21 @@ export default {
       default: []
     }
   },
+  emits: ['item-click'],
+  // directives: {
+  //   contextMenu: {
+  //     mounted(el, bing, v_node) {
+  //       const parentNode = el.parentNode;
+  //       parentNode.addEventListener('contextmenu', function (e) {
+  //         e.preventDefault();
+  //         el.style.display = 'block'
+  //         el.style.left = e.pageX + 'px'
+  //         el.style.top = e.pageY + 'px'
+  //
+  //       })
+  //     }
+  //   },
+  // },
   components: {contextMenuItem, contextSubMenu},
   setup(props, ctx) {
     const {attrs} = ctx;
@@ -30,29 +45,33 @@ export default {
     if (!options.data) {
       options.data = toRefs(props.data)
     }
-
-
     dataOption = options.data;
     const menuData = [];
-    for (let i in dataOption) {
-      menuData.push(dataOption[i].value);
-    }
+    for (let i in dataOption) menuData.push(dataOption[i].value);
+
 
     function handledMouseMove() {
       console.log(22);
     }
 
     function itemClick(e, data) {
-      console.log(data);
       e.stopPropagation();
-      ctx.emit('itemClick', e, data)
-
+      ctx.emit('item-click', e, data)
     }
 
+    const addClass = () => {
+
+    }
     return {
       handledMouseMove,
       menuData,
-      itemClick
+      itemClick,
+      addClass
+    }
+  },
+  methods: {
+    getAdd() {
+
     }
   }
 }
