@@ -5,6 +5,11 @@
     <l-button theme="subordination" @click="add">确定</l-button>
     <l-button size="mini" theme="error">确定按鈕</l-button>
     <l-button theme="warning">确定</l-button>
+    <br>
+    <l-button gradient="success">确定</l-button>
+    <l-button gradient="primary">确定</l-button>
+    <l-button gradient="subordination">确定</l-button>
+    <l-button gradient="warning">确定</l-button>
     <l-switch @change="handledContextClick" v-model:value="dialog"></l-switch>
     <br>
 <!--    <div style="display:inline-block;width: 500px;height: 500px;border: 1px solid"-->
@@ -32,6 +37,7 @@
           不得不承认，computed这个强大功能的实现果然少不了内部非常复杂的实现，这个双向依赖收集的套路相信也会给各位小伙伴带来很大的启发。跟着尤大学习，果然有肉吃！
           另外由于@vue/reactivity的框架无关性，我把它整合进了React，做了一个状态管理库，可以完整的使用上述的computed等强大的Vue3能力。
         </p>
+        <l-loading  ></l-loading>
       </l-tab-item>
       <l-tab-item label="3" name="3">
         <l-button theme="success">确定</l-button>
@@ -92,13 +98,13 @@
     <div v-show="show">奇怪奇怪骑过去</div>
     <l-input></l-input>
   </div>
-<!--  <l-loading></l-loading>-->
+<!--  <l-loading content-text="正在加载"></l-loading>-->
 </template>
 <script>
 import {ref, onMounted, getCurrentInstance} from 'vue'
-
 export default {
   name: 'App',
+
   setup(props, ctx) {
     const internalInstance = getCurrentInstance()
 

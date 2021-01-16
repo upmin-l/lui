@@ -24,7 +24,7 @@ function compile() {
     return src(url).pipe(sass.sync()).pipe(autoPreFixer({
         browsers: ['last 2 versions', 'ie>9']
     }))
-        .pipe(cssMin())
+        // .pipe(cssMin())
         .pipe(rename('index.css'))
         .pipe(dest('../bag/styles'))
 }
@@ -45,7 +45,7 @@ function buildSegregateCss(v) {
             .pipe(autoPreFixer({
                 browsers: ['last 2 versions', 'ie>9']
             }))
-            .pipe(cssMin())
+            // .pipe(cssMin())
             .pipe(rename(`l-${compName}.css`))
             .pipe(dest('../bag/styles'));
     })
