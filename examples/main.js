@@ -3,7 +3,7 @@ import App from './App.vue'
 // import router from "./router";
 import './index.css'
 // import './assets/css/index.scss'
-import '../bag/styles/index.css'
+import '../lib/styles/index.css'
 
 
 const Vue = createApp(App);

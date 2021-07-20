@@ -12,16 +12,15 @@
     <l-button gradient="warning">确定</l-button>
     <l-switch @change="handledContextClick" v-model:value="dialog"></l-switch>
     <br>
-<!--    <div style="display:inline-block;width: 500px;height: 500px;border: 1px solid"-->
-<!--         v-context-menu="menuData"></div>-->
+    <div style="display:inline-block;width: 500px;height: 500px;border: 1px solid"
+         v-context-menu="menuData" @item-click="handledContextClick"></div>
+<!--    background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);-->
     <div  style="display:inline-block;width: 500px;height: 500px;background-color: #f60">
-<!--      <l-context-menu :data="menuData.data" @item-click="handledContextClick">-->
-
-<!--      </l-context-menu>-->
+      <l-context-menu :data="menuData.data" @item-click="handledContextClick"></l-context-menu>
     </div>
     <l-radio v-model:value="radio1" label="1">确定</l-radio>
     <l-radio v-model:value="radio1" label="2">确定</l-radio>
-    <l-tabs v-model:value="activeName" @tabsClick="handledTabsClick">
+    <l-tabs :navBarColor="['#FEB692','#EA5455']" v-model:value="activeName" @tabsClick="handledTabsClick">
       <l-tab-item label="表情1" name="1">
         <p> Single-origin coffee tilde craft beer organic wolf. Plaid kickstarter vegan roof party vice, try-hard
           taxidermy truffaut small batch. PBR&B butcher helvetica, green juice craft beer kickstarter skateboard. +1
@@ -167,7 +166,13 @@ export default {
                 },
                 {
                   name: '不翻译',
-                  id: '66'
+                  id: '66',
+                  children:[
+                    {
+                      name:'哈哈',
+                      id:"77"
+                    }
+                  ]
                 }
               ]
             }
@@ -196,7 +201,6 @@ export default {
     }
 
     function handledContextClick(e, val) {
-      console.log(e);
       console.log(val);
     }
 

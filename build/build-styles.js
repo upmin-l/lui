@@ -10,27 +10,27 @@ const chalk = require("chalk")
 let paths = {
     styles: {
         src: '../src/styles/**/*.scss',
-        dest: '../bag/styles'
+        dest: '../lib/styles'
     },
 };
 const url = '../src/styles/index.scss';
 
 function clean() {
-    return del(['bag/styles'])
+    return del(['lib/styles'])
 }
 
 function compile() {
     console.log(chalk.green.bgRed(`=   正在编译scss！ =`))
     return src(url).pipe(sass.sync()).pipe(autoPreFixer({
-        browsers: ['last 2 versions', 'ie>9']
+        Browserslist: ['last 2 versions', 'ie>9']
     }))
         // .pipe(cssMin())
         .pipe(rename('index.css'))
-        .pipe(dest('../bag/styles'))
+        .pipe(dest('../lib/styles'))
 }
 
 function copyFont() {
-    return src('../examples/styles/fonts/**').pipe(cssMin()).pipe(dest('../bag/fonts'))
+    return src('../examples/styles/fonts/**').pipe(cssMin()).pipe(dest('../lib/fonts'))
 }
 
 function is_watch() {
@@ -38,18 +38,17 @@ function is_watch() {
 }
 
 //todo gulp不支持ts？？？？
-function buildSegregateCss(v) {
+function buildSegregateCss() {
     Object.keys(components).forEach(compName => {
         src(`../src/styles/packages/${compName}.scss`)
             .pipe(sass.sync())
             .pipe(autoPreFixer({
-                browsers: ['last 2 versions', 'ie>9']
+                Browserslist: ['last 2 versions', 'ie>9']
             }))
             // .pipe(cssMin())
-            .pipe(rename(`l-${compName}.css`))
-            .pipe(dest('../bag/styles'));
+            .pipe(rename(`${compName}.css`))
+            .pipe(dest('../lib/styles'));
     })
-    v()
 }
 // buildSegregateCss
 let build = series(clean, parallel(compile, copyFont,buildSegregateCss));

@@ -62,7 +62,7 @@ fs.writeFile(OUTPUT_PATH, template, (err) => {
         return
     }
     console.log(chalk.green(`================================================`))
-    console.log(chalk.green(`=   生成组件入口文件成功(build files success)! =`))
+    console.log(chalk.green(`=   生成组件入口文件成功(build files success) =`))
     console.log(chalk.green(`================================================`))
 });
 
