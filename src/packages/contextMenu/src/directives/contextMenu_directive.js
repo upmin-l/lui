@@ -39,7 +39,7 @@ const contextMenuObj = {
 
 export default {
     install(Vue) {
-        Vue.directive('contextMenu', contextMenuObj)
+        Vue.directive('lContextMenu', contextMenuObj)
     },
     abc(){
         console.log(123);

@@ -19,7 +19,7 @@ import {toRefs, computed, ref, nextTick} from "vue";
 import contextMenuItem from "./contextMenuItem.vue";
 
 export default {
-  name: "contextSubMenu",
+  name: "lContextSubMenu",
   props: {
     is: {
       type: Object || Array,

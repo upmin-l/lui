@@ -7,11 +7,8 @@
     <div class="layout-header-nav">
       <ul class="layout-header-nav-menu">
         <li>首页</li>
-        <li>文档</li>
-        <li>组件</li>
-        <l-button theme="subordination" >FQA</l-button>
-        <l-button theme="subordination" >FQA</l-button>
-        <l-button theme="subordination" >FQA</l-button>
+        <li>gg</li>
+        <li>方法</li>
       </ul>
     </div>
   </div>
@@ -19,9 +16,13 @@
 
 <script>
 import { ref } from 'vue'
+import { lButton } from '../../../src/index'
 
 export default {
   name: "rootHeader",
+  components: {
+    lButton
+  },
   setup() {
     let activeName = ref('2');
     const handledTabsClick = (val, name) => {
