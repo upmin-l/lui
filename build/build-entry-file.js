@@ -44,10 +44,12 @@ ComponentNames.forEach(item => {
         name: componentName,
         package: item
     }))
+
     installTemplate.push(renderString('{{name}}', {
         name: componentName,
         component: item
     }))
+    console.log(installTemplate);
 })
 
 const template = renderString(MAIN_TEMPLATE, {
@@ -62,7 +64,8 @@ fs.writeFile(OUTPUT_PATH, template, (err) => {
         return
     }
     console.log(chalk.green(`================================================`))
-    console.log(chalk.green(`=   生成组件入口文件成功(build files success) =`))
+    console.log(chalk.green(`  生成组件入口文件成功 `))
+    console.log(chalk.green(`(the component entry file was generated success)`))
     console.log(chalk.green(`================================================`))
 });
 
