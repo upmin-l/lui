@@ -1,6 +1,8 @@
 $vw_unit: 1080;
 $component_menu: 270px;
 $borderColor: #efeff5;
+$-Primary-: #009af3;
+$-default-: #3f51b5;
 @function vh($px) {
   @return ($px / $vw_unit) * 100vh;
 }

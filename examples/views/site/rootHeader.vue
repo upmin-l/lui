@@ -9,6 +9,7 @@
         <li>首页</li>
         <li>gg</li>
         <li>方法</li>
+        <l-button theme="success">你好</l-button>
       </ul>
     </div>
   </div>
@@ -16,6 +17,7 @@
 
 <script>
 import { ref } from 'vue'
+// import '../../../lib/styles/button.css'
 import { lButton } from '../../../src/index'
 
 export default {

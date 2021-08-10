@@ -1,6 +1,6 @@
 @import "global";
 
-//@import "./rootHeader";
+@import "./rootHeader";
 
 .layout {
   display: grid;
@@ -8,43 +8,6 @@
   grid-template-columns: $component_menu auto;
 }
 
-.layout-header {
-  display: grid;
-  width: 100%;
-  text-align: center;
-  height: vh(56);
-  grid-template-columns: calc(#{$component_menu} - 32px) 1fr auto;
-  padding: 0 vh(42);
-  border-bottom: 1px solid rgb(239, 239, 245);
-
-  .layout-header-logo {
-    cursor: pointer;
-    display: flex;
-    font-size: vh(28);
-    align-items: center;
-
-    img {
-      width: vh(32);
-      height: vh(32);
-      margin-right: vh(10);
-    }
-  }
-
-  .layout-header-nav {
-    display: flex;
-    text-align: center;
-
-    .layout-header-nav-menu {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-
-      li {
-        padding: 0 vh(32);
-      }
-    }
-  }
-}
 
 
 .layout-aside {
@@ -88,6 +51,11 @@
     cursor: default;
     height: 36px;
     align-items: center;
+  }
+
+  .layout-aside-submenu:hover .layout-aside-item-content {
+    color: mix($-default-, #fff, 60%);
+    transition: color 250ms cubic-bezier(.4, 0, .2, 1), opacity 250ms cubic-bezier(.4, 0, .2, 1);
   }
 }
 

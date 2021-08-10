@@ -3,29 +3,7 @@
     <root-header></root-header>
     <div style="position: absolute;left: 0;top: 52px;bottom: 0;right: 0">
       <div class="layout">
-        <aside class="layout-aside">
-          <div class="layout-container">
-            <span class="item-group-title">通用直接</span>
-            <ul>
-              <li class="layout-aside-submenu">
-                <div class="layout-aside-item-content">
-                  <span>button</span>
-                  <em>按钮</em>
-                </div>
-              </li>
-              <li class="layout-aside-submenu">
-                <div class="layout-aside-item-content">
-                  <span>button</span>
-                </div>
-              </li>
-              <li class="layout-aside-submenu">
-                <div class="layout-aside-item-content">
-                  <span>button</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </aside>
+        <root-left></root-left>
         <div>
           <router-view></router-view>
         </div>

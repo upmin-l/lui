@@ -2,54 +2,129 @@ const chalk = require('chalk')
 const path = require('path')
 const inquirer = require('inquirer');
 const fs = require('fs')
-const renderString = require('json-templater/string');
-const endOfLine =require('os').EOL
-class task {
-    constructor() {
+const endOfLine = require('os').EOL
+const {fork} = require('child_process');
 
-    }
+async function getAlias() {
+    return new Promise((resolve => {
+        function recursion() {
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'alias',
+                    message: '中文名'
+                }
+            ]).then(v => {
+                const {alias} = v;
+                alias ? resolve(alias) : recursion()
+            })
+        }
 
-    async crateComponent() {
-        return new Promise(async (resolve, reject) => {
-            const res = inquirer.prompt([{
+        recursion()
+    }))
+}
+
+function crateComponent() {
+    return new Promise(async (resolve, reject) => {
+        inquirer.prompt([
+            {
                 type: 'input',
                 name: 'workFile',
                 message: '请输入component名字'
-            }]).then(async v => {
+            },
+        ])
+            .then(async v => {
                 const {workFile} = v;
-                const pathUrl = path.resolve(__dirname, '../', `src/packages/${ workFile }/`,)
-                console.log(chalk.green(pathUrl + '\\' + 'index.js'))
-                const is_exist = fs.existsSync(path.resolve(__dirname, '../', `src/packages/${ workFile }/`));
-
-                if (is_exist) {
-                    console.log(chalk.red('此目录已经存在'))
+                if (!workFile) {
+                    await crateComponent();
                     return
-                } else {
-                    const file = path.resolve(__dirname, '../', `src/packages/${ workFile }`);
-                    fs.mkdirSync(file)
-                    let pag = `import ${ workFile } from './src/${ workFile }.vue';${endOfLine}`
-                    pag += `${ workFile }.install = function (Vue) {
+                }
+                await getAlias().then(async alias => {
+                    const pathUrl = path.resolve(__dirname, '../', `src/packages/${ workFile }/`,)
+                    const scssUrl = path.resolve(__dirname, '../', `src/styles/packages/${ workFile }/`,)
+                    console.log(chalk.greenBright(pathUrl + '\\' + 'index.js'))
+                    const is_exist = fs.existsSync(path.resolve(__dirname, '../', `src/packages/${ workFile }/`));
+                    if (is_exist) {
+                        console.log(chalk.red('>> 此组件已经存在'))
+                    } else {
+                        await disposeComponentPath({workFile}).then((start) => {
+                            if (start) {
+                                const file = path.resolve(__dirname, '../', `src/packages/${ workFile }`);
+                                fs.mkdirSync(file)
+                                let src = fs.mkdirSync(file + '\\' + 'src', {recursive: true})
+                                const disposeTemplateRes = disposeTemplate(workFile, 'js')
+                                console.log(chalk.greenBright(`>> create entry file`))
+                                console.log(chalk.greenBright(`>> write a template`))
+
+
+                                writeTemplate(pathUrl + '\\' + 'index.js', disposeTemplateRes, (err) => {
+                                    if (err) {
+                                        console.log(err);
+                                        return
+                                    }
+                                    console.log(chalk.greenBright(`ok!`))
+                                    resolve({
+                                        component: workFile,
+                                        alias: alias
+                                    })
+                                })
+                            }
+                        })
+                    }
+                })
+            })
+    })
+}
+
+function disposeTemplate(workFile, type = 'js') {
+    let pag = `import ${ workFile } from './src/${ workFile }.vue';${ endOfLine }`
+    pag += `${ workFile }.install = function (Vue) {
 Vue.component(${ workFile }.name, ${ workFile })
 };
 export default ${ workFile }
                             `
-                    fs.writeFile(pathUrl + '\\' + 'index.js', pag, (err) => {
-                        console.log(err);
-                    })
-                }
-
-                console.log(chalk.green(`================================================`))
-                console.log(chalk.green(`=   生成组件入口文件成功(build files success) =`))
-                console.log(chalk.green(`================================================`))
-            })
-        })
-    }
+    return pag
 }
 
-const Task = new task();
+function writeTemplate(path, template, callback) {
+    fs.writeFile(path, template, (err) => {
+        callback && callback()
+    })
+
+}
+
+function disposeComponentPath({workFile}) {
+    return new Promise((resolve, reject) => {
+        try {
+            const componentPath = path.resolve(__dirname, '..', 'components.json');
+            fs.readFile(componentPath, 'utf-8', (err, data) => {
+                if (err) {
+                    console.log(err);
+                    return
+                }
+                const reversalData = JSON.parse(data);
+                reversalData[workFile] = `src/packages/${ workFile }/index.js`;
+                fs.writeFile(componentPath, JSON.stringify(reversalData), (err, data) => {
+                    if (err) {
+                        console.log(err);
+                        return
+                    }
+                    resolve('ok!')
+                })
+            })
+        } catch (err) {
+            console.log(chalk.redBright('》》 生成组件路径失败！'))
+            reject(err)
+        }
+
+    })
+}
 
 async function start() {
-    await Task.crateComponent()
+    let RunComponent = await crateComponent()
+    return [RunComponent]
 }
 
-start()
+start().then((data) => {
+    console.log(data);
+})

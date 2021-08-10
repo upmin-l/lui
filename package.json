@@ -21,6 +21,7 @@
     "dev": "npm run build:entry && cross-env NODE_ENV=development vite",
     "build": "vite build",
     "clean:bag": "rimraf lib",
+    "new": "node build/new.js",
     "build:style": "rimraf lib/styles && gulp --gulpfile build/build-styles.js",
     "build:entry": "node build/build-entry-file.js"
   },
