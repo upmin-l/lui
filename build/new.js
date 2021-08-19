@@ -3,7 +3,6 @@ const path = require('path')
 const inquirer = require('inquirer');
 const fs = require('fs')
 const endOfLine = require('os').EOL
-const {fork} = require('child_process');
 
 async function getAlias() {
     return new Promise((resolve => {
@@ -41,31 +40,47 @@ function crateComponent() {
                 }
                 await getAlias().then(async alias => {
                     const pathUrl = path.resolve(__dirname, '../', `src/packages/${ workFile }/`,)
-                    const scssUrl = path.resolve(__dirname, '../', `src/styles/packages/${ workFile }/`,)
+                    const scssUrl = path.resolve(__dirname, '../', `src/styles/packages/`,)
                     console.log(chalk.greenBright(pathUrl + '\\' + 'index.js'))
                     const is_exist = fs.existsSync(path.resolve(__dirname, '../', `src/packages/${ workFile }/`));
                     if (is_exist) {
                         console.log(chalk.red('>> 此组件已经存在'))
                     } else {
-                        await disposeComponentPath({workFile}).then((start) => {
+                        await disposeComponentPath({workFile}).then(async start => {
                             if (start) {
                                 const file = path.resolve(__dirname, '../', `src/packages/${ workFile }`);
                                 fs.mkdirSync(file)
                                 let src = fs.mkdirSync(file + '\\' + 'src', {recursive: true})
                                 const disposeTemplateRes = disposeTemplate(workFile, 'js')
-                                console.log(chalk.greenBright(`>> create entry file`))
-                                console.log(chalk.greenBright(`>> write a template`))
 
+                                console.log(chalk.greenBright(`>> 创建入口文件`))
+                                console.log(chalk.greenBright(`>> 写入模板`))
+                                await new Promise(resolve => {
+                                    writeTemplate(pathUrl + '\\' + 'index.js', disposeTemplateRes, (err) => {
+                                        if (err) {
+                                            console.log(err);
+                                            return
+                                        }
+                                        console.log(chalk.greenBright(`ok!`))
+                                        resolve()
+                                    })
+                                })
 
-                                writeTemplate(pathUrl + '\\' + 'index.js', disposeTemplateRes, (err) => {
+                                console.log(chalk.greenBright(`>> create scss file`))
+                                writeTemplate(scssUrl + '\\' + `${ workFile }.scss`, '@import "../constant/const";', (err) => {
                                     if (err) {
                                         console.log(err);
                                         return
                                     }
-                                    console.log(chalk.greenBright(`ok!`))
-                                    resolve({
-                                        component: workFile,
-                                        alias: alias
+                                    console.log(chalk.greenBright(`>> 已创建${ workFile }.scss`))
+                                    console.log(chalk.greenBright(`>> 正在导出到入口`))
+                                    const scssEntry = path.resolve(__dirname, '../', `src/styles/index.scss`,)
+                                    fs.appendFile(scssEntry, `@import "packages/${ workFile }";`, () => {
+                                        console.log(chalk.greenBright(`>> 已完成`))
+                                        resolve({
+                                            component: workFile,
+                                            alias: alias
+                                        })
                                     })
                                 })
                             }
@@ -90,7 +105,6 @@ function writeTemplate(path, template, callback) {
     fs.writeFile(path, template, (err) => {
         callback && callback()
     })
-
 }
 
 function disposeComponentPath({workFile}) {
@@ -125,6 +139,22 @@ async function start() {
     return [RunComponent]
 }
 
-start().then((data) => {
-    console.log(data);
-})
+// start().then((data) => {
+//     console.log(data);
+// })
+
+fn()
+
+function fn() {
+    inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'is',
+            default: false,
+            message: '是否更新到路由'
+        }
+    ]).then((data) => {
+        console.log(__dirname);
+        console.log(data);
+    })
+}

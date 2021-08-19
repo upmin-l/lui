@@ -6,6 +6,7 @@
         <root-left></root-left>
         <div>
           <router-view></router-view>
+            <l-context-menu :data="menuData.data" @item-click="handledContextClick"></l-context-menu>
         </div>
       </div>
     </div>
