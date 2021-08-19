@@ -2,6 +2,7 @@
   <div @click="itemClick" class="l-contextMenu-item">
     <slot>
       <span style="padding-right: 8px">{{ is.name }}</span>
+      <i v-if="is.children" class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>
     </slot>
   </div>
 </template>

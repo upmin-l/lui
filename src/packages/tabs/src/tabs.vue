@@ -1,6 +1,6 @@
 <template>
   <div class="l-tabs" :style="{width:width,minHeight:height}">
-    <div class="l-tabs-nav-bar" ref="indicator"></div>
+    <div class="l-tabs-nav-bar" :style="{background:`linear-gradient(30deg, ${navBarColor})`}"  ref="indicator"></div>
     <div class="l-tabs-nav" ref="navBox">
       <div class="l-tabs-nav-item"
            @click="handledTabsClick($event,item)"
@@ -42,6 +42,9 @@ export default defineComponent(
         height: {
           type:String,
           default:'200px'
+        },
+        navBarColor:{
+          type:[],
         }
       },
       setup(props: any, context: any) {

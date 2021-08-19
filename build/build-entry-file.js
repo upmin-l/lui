@@ -19,12 +19,12 @@ const install = function (Vue) {
     components.map(v => {
         Vue.component(v.name,v)
     })
-    Vue.component(ContextMenu.contextSubMenu.name,ContextMenu.contextSubMenu)
-    Vue.component(Loading.loading.name,Loading.loading)
-    Vue.component(ContextMenu.contextMenu.name,ContextMenu.contextMenu)
-    Vue.use(ContextMenu.contextMenu_directive);
-    Vue.use(Loading.loading_directive);
-    Vue.config.globalProperties.$contextMenu = ContextMenu.contextMenu_directive
+    Vue.component(lContextMenu.lContextMenuSubMenu.name,lContextMenu.lContextMenuSubMenu)
+    Vue.component(lLoading.loading.name,lLoading.loading)
+    Vue.component(lContextMenu.lContextMenu.name,lContextMenu.lContextMenu)
+    Vue.use(lContextMenu.contextMenu_directive);
+    Vue.use(lLoading.loading_directive);
+    Vue.config.globalProperties.$contextMenu = lContextMenu.contextMenu_directive
 
 }
 const lUi = {
@@ -41,15 +41,14 @@ const installTemplate = [];
 ComponentNames.forEach(item => {
     let componentName = upperCamelcase(item);
     includeComponentTemplate.push(renderString(IMPORT_TEMPLATE, {
-        name: componentName,
+        name: `l${componentName}`,
         package: item
     }))
     installTemplate.push(renderString('{{name}}', {
-        name: componentName,
+        name: `l${componentName}`,
         component: item
     }))
 })
-
 const template = renderString(MAIN_TEMPLATE, {
     filePath: includeComponentTemplate.join(endOfLine),
     install: installTemplate.join(',' + endOfLine)
@@ -62,7 +61,8 @@ fs.writeFile(OUTPUT_PATH, template, (err) => {
         return
     }
     console.log(chalk.green(`================================================`))
-    console.log(chalk.green(`=   生成组件入口文件成功(build files success)! =`))
+    console.log(chalk.green(`  生成组件入口文件成功 `))
+    console.log(chalk.green(`(the component entry file was generated success)`))
     console.log(chalk.green(`================================================`))
 });
 

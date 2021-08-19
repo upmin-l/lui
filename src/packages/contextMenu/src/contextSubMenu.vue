@@ -1,8 +1,10 @@
 <template>
-  <div :class="className" class="l-contextMenu-item" @mouseenter="handledMouseenter" @mouseleave="handledMouseleave">
+  <div :class="className" @click="handledItemClick($event)" class="l-contextMenu-item" @mouseenter="handledMouseenter"
+       @mouseleave="handledMouseleave">
     <div :class="computed_title">
-      <span style="padding-right: 8px">{{ is.name }}</span>
-      <i v-if="is.children" class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>
+      <context-menu-item @item-click="handledItemClick" :is="is"></context-menu-item>
+<!--      <span style="padding-right: 8px">{{ is.name }}</span>-->
+<!--      <i v-if="is.children" class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>-->
     </div>
     <ul v-show="hover" class="l-context-menu" v-if="is.children">
       <li v-for="(item,index) of is.children">
@@ -14,9 +16,10 @@
 
 <script>
 import {toRefs, computed, ref, nextTick} from "vue";
+import contextMenuItem from "./contextMenuItem.vue";
 
 export default {
-  name: "contextSubMenu",
+  name: "lContextSubMenu",
   props: {
     is: {
       type: Object || Array,
@@ -24,6 +27,7 @@ export default {
     }
   },
   emits: ['item-click'],
+  components:{contextMenuItem},
   setup(props, ctx) {
     const {is} = toRefs(props);
     let hover = ref(false);
@@ -54,6 +58,13 @@ export default {
       },
       handledMouseleave(e) {
         hover.value = false
+      },
+      handledItemClick(e) {
+        e.stopPropagation()
+        if (!is.value.children){
+          console.log({...is.value})
+          ctx.emit('item-click', e, is)
+        }
       }
     }
     return {

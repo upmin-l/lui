@@ -1,10 +1,12 @@
 <template>
   <ul class="l-context-menu">
     <li v-for="item in menuData">
-      <context-sub-menu v-if="item.children"
+
+      <context-sub-menu
+                        @item-click="itemClick"
                         :is="item">
       </context-sub-menu>
-      <context-menu-item @item-click="itemClick($event,item)" v-else :is="item"></context-menu-item>
+<!--      <context-menu-item @item-click="itemClick" v-else :is="item"></context-menu-item>-->
     </li>
   </ul>
 </template>
@@ -55,7 +57,7 @@ export default {
     }
 
     function itemClick(e, data) {
-      e.stopPropagation();
+      console.log(data);
       ctx.emit('item-click', e, data)
     }
 

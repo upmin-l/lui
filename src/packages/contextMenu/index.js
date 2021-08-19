@@ -1,16 +1,16 @@
-import contextMenu from "./src/contextMenu.vue";
-import contextMenuSubMenu from "./src/contextMenuItem.vue";
-import contextMenu_directive from "./src/directives/contextMenu_directive";
-import contextSubMenu from "./src/contextSubMenu.vue";
+import lContextMenu from "./src/contextMenu.vue";
+import lContextMenuSubMenu from "./src/contextMenuItem.vue";
+import lContextMenu_directive from "./src/directives/contextMenu_directive";
+import lContextSubMenu from "./src/contextSubMenu.vue";
 export default {
     install(Vue) {
-        Vue.use(contextMenu_directive);
-        Vue.component(contextMenu.name, contextMenu)
-        Vue.component(contextSubMenu.name, contextSubMenu)
-        Vue.component(contextMenuSubMenu.name, contextMenuSubMenu)
-        Vue.config.globalProperties.$contextMenu = contextMenu_directive
+        Vue.use(lContextMenu_directive);
+        Vue.component(lContextMenu.name, lContextMenu)
+        Vue.component(lContextSubMenu.name, lContextSubMenu)
+        Vue.component(lContextMenuSubMenu.name, lContextMenuSubMenu)
+        Vue.config.globalProperties.$contextMenu = lContextMenu_directive
     },
-    contextMenu,
-    contextSubMenu,
-    contextMenu_directive
+    lContextMenu,
+    lContextMenuSubMenu,
+    lContextMenu_directive
 }

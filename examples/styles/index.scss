@@ -1,0 +1,68 @@
+@import "global";
+
+@import "./rootHeader";
+
+.layout {
+  display: grid;
+  height: 100%;
+  grid-template-columns: $component_menu auto;
+}
+
+
+
+.layout-aside {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 99;
+  border-right: 1px solid $borderColor;
+
+  .layout-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .layout-aside-submenu {
+    height: 42px;
+    margin-top: 6px;
+    position: relative;
+  }
+
+  .layout-aside-item-content {
+    box-sizing: border-box;
+    line-height: 1.75;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 20%);
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: auto;
+    padding-right: 18px;
+
+    span {
+      grid-column-start: 2;
+    }
+  }
+
+  .item-group-title {
+    display: flex;
+    cursor: default;
+    height: 36px;
+    align-items: center;
+  }
+
+  .layout-aside-submenu:hover .layout-aside-item-content {
+    color: mix($-default-, #fff, 60%);
+    transition: color 250ms cubic-bezier(.4, 0, .2, 1), opacity 250ms cubic-bezier(.4, 0, .2, 1);
+  }
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  box-sizing: border-box;
+}

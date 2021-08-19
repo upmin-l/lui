@@ -5,7 +5,7 @@
           @click="onClick"
           @animationend="onAnimationend"
           :disabled="is_disabled"
-          :class="[is_computeTheme,is_size,{'is_disabled':is_disabled},block?'is_block':'',{'is_after':is_after}]"
+          :class="[is_computeTheme,is_size,{'is_disabled':is_disabled},{is_block:block},{'is_after':is_after}]"
           type="button">
     <span v-if="icon" :class="icon"></span>
     <span><slot></slot></span>
@@ -35,7 +35,6 @@ export default defineComponent(
             const signArr = ['primary', 'success', 'subordination', 'error', 'warning', 'dark'].find(item => props.gradient === item)
             return signArr ? `l-button-g-${signArr}` : props.theme ? `l-button-${props.theme}` : `l-button-default`
           } else {
-            //TODO
             return `is_circle l-button-${props.theme}`
           }
         })
@@ -49,10 +48,8 @@ export default defineComponent(
         const onAnimationend = () => {
           is_after.value = false;
         }
-        const onClick = (e:MouseEvent) => {
-          if (props.disabled) {
-            e.preventDefault()
-          }
+        const onClick = (e: MouseEvent) => {
+          if (props.disabled) e.preventDefault()
           is_after.value = true;
         }
         const {...res} = context.attrs

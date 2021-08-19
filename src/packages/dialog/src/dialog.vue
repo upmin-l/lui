@@ -54,7 +54,7 @@ export default defineComponent(
 
         const computedMainSize = computed(() => {
           let style = <is_style>{};
-          style.width = props.width as string || 30 + '%';
+          style.width = props.width as string || 400 + 'px';
           style.marginTop = props.top || 15 + "vh";
           return style
         })
