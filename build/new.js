@@ -10,12 +10,12 @@ async function getAlias() {
             inquirer.prompt([
                 {
                     type: 'input',
-                    name: 'alias',
+                    name: 'chinese',
                     message: '中文名'
                 }
             ]).then(v => {
-                const {alias} = v;
-                alias ? resolve(alias) : recursion()
+                const {chinese} = v;
+                chinese ? resolve(chinese) : recursion()
             })
         }
 
@@ -38,7 +38,7 @@ function crateComponent() {
                     await crateComponent();
                     return
                 }
-                await getAlias().then(async alias => {
+                await getAlias().then(async chinese => {
                     const pathUrl = path.resolve(__dirname, '../', `src/packages/${ workFile }/`,)
                     const scssUrl = path.resolve(__dirname, '../', `src/styles/packages/`,)
                     console.log(chalk.greenBright(pathUrl + '\\' + 'index.js'))
@@ -46,7 +46,8 @@ function crateComponent() {
                     if (is_exist) {
                         console.log(chalk.red('>> 此组件已经存在'))
                     } else {
-                        await disposeComponentPath({workFile}).then(async start => {
+                        await disposeComponentPath({workFile,chinese}).then(async start => {
+                            return
                             if (start) {
                                 const file = path.resolve(__dirname, '../', `src/packages/${ workFile }`);
                                 fs.mkdirSync(file)
@@ -79,7 +80,7 @@ function crateComponent() {
                                         console.log(chalk.greenBright(`>> 已完成`))
                                         resolve({
                                             component: workFile,
-                                            alias: alias
+                                            chinese: chinese
                                         })
                                     })
                                 })
@@ -107,7 +108,7 @@ function writeTemplate(path, template, callback) {
     })
 }
 
-function disposeComponentPath({workFile}) {
+function disposeComponentPath({workFile,chinese}) {
     return new Promise((resolve, reject) => {
         try {
             const componentPath = path.resolve(__dirname, '..', 'components.json');
@@ -117,7 +118,13 @@ function disposeComponentPath({workFile}) {
                     return
                 }
                 const reversalData = JSON.parse(data);
-                reversalData[workFile] = `src/packages/${ workFile }/index.js`;
+                console.log(reversalData);
+                reversalData.push({
+                    name:workFile,
+                    chinese,
+                    path:`src/packages/${ workFile }/index.js`
+                })
+                // reversalData[workFile] = `src/packages/${ workFile }/index.js`;
                 fs.writeFile(componentPath, JSON.stringify(reversalData), (err, data) => {
                     if (err) {
                         console.log(err);
@@ -135,15 +142,15 @@ function disposeComponentPath({workFile}) {
 }
 
 async function start() {
-    let RunComponent = await crateComponent()
+    let RunComponent = await crateComponent();
     return [RunComponent]
 }
 
-// start().then((data) => {
-//     console.log(data);
-// })
+start().then((data) => {
+    console.log(data);
+})
 
-fn()
+// fn()
 
 function fn() {
     inquirer.prompt([
