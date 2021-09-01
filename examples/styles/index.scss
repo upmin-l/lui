@@ -9,7 +9,6 @@
 }
 
 
-
 .layout-aside {
   position: relative;
   display: flex;
@@ -34,16 +33,28 @@
     line-height: 1.75;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 20%);
+    padding-left: 50px;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: ". content .";
     align-items: center;
     cursor: pointer;
     position: relative;
     z-index: auto;
     padding-right: 18px;
+    font-size: 14px;
 
     span {
       grid-column-start: 2;
     }
+
+    em {
+      color: #9ea4aa;
+      margin-left: 5px;
+    }
+  }
+
+  .layout-aside-item-areas {
+    grid-area: content;
   }
 
   .item-group-title {
@@ -53,9 +64,13 @@
     align-items: center;
   }
 
-  .layout-aside-submenu:hover .layout-aside-item-content {
-    color: mix($-default-, #fff, 60%);
+  .layout-aside-submenu:hover {
+    color: mix($-Primary-, $borderColor, 60%);
     transition: color 250ms cubic-bezier(.4, 0, .2, 1), opacity 250ms cubic-bezier(.4, 0, .2, 1);
+
+    em {
+      color: mix($-Primary-, $borderColor, 60%);
+    }
   }
 }
 

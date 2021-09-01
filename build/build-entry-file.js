@@ -35,18 +35,17 @@ export{
 }
 export default lUi
 `
-const ComponentNames = Object.keys(components);
 const includeComponentTemplate = [];
 const installTemplate = [];
-ComponentNames.forEach(item => {
-    let componentName = upperCamelcase(item);
+components.forEach(item => {
+    let componentName = upperCamelcase(item.name);
     includeComponentTemplate.push(renderString(IMPORT_TEMPLATE, {
         name: `l${componentName}`,
-        package: item
+        package: item.name
     }))
     installTemplate.push(renderString('{{name}}', {
         name: `l${componentName}`,
-        component: item
+        component: item.name
     }))
 })
 const template = renderString(MAIN_TEMPLATE, {

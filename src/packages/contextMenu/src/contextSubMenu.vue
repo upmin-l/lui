@@ -3,11 +3,11 @@
        @mouseleave="handledMouseleave">
     <div :class="computed_title">
       <context-menu-item @item-click="handledItemClick" :is="is"></context-menu-item>
-<!--      <span style="padding-right: 8px">{{ is.name }}</span>-->
-<!--      <i v-if="is.children" class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>-->
+      <!--      <span style="padding-right: 8px">{{ is.name }}</span>-->
+      <!--      <i v-if="is.children" class="l-contextMenu__expand-icon iconfont icon-icon_expandlistcopy"></i>-->
     </div>
     <ul v-show="hover" class="l-context-menu" v-if="is.children">
-      <li v-for="(item,index) of is.children">
+      <li style="white-space: nowrap" v-for="(item,index) of is.children">
         <context-sub-menu :is="item" :key="index"></context-sub-menu>
       </li>
     </ul>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {toRefs, computed, ref, nextTick} from "vue";
+import { toRefs, computed, ref, nextTick } from "vue";
 import contextMenuItem from "./contextMenuItem.vue";
 
 export default {
@@ -27,7 +27,7 @@ export default {
     }
   },
   emits: ['item-click'],
-  components:{contextMenuItem},
+  components: {contextMenuItem},
   setup(props, ctx) {
     const {is} = toRefs(props);
     let hover = ref(false);
@@ -52,7 +52,7 @@ export default {
           hover.value = true;
           if (lastChild.style) {
             lastChild.style.left = width + 'px';
-            lastChild.style.top = -8 + 'px';
+            lastChild.style.top = - 8 + 'px';
           }
         })
       },
@@ -61,7 +61,7 @@ export default {
       },
       handledItemClick(e) {
         e.stopPropagation()
-        if (!is.value.children){
+        if (!is.value.children) {
           console.log({...is.value})
           ctx.emit('item-click', e, is)
         }
@@ -95,10 +95,6 @@ export default {
   color: #409eff;
 }
 
-/*.l-position {*/
-/*  top: -8px;*/
-/*  right: -55px;*/
-/*}*/
 .l-contextMenu__expand-icon {
   position: absolute;
   right: 5px;

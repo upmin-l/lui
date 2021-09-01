@@ -1,22 +1,14 @@
 <template>
   <aside class="layout-aside">
     <div class="layout-container">
-      <span class="item-group-title">通用直接</span>
+      <span class="item-group-title">通用法师法师</span>
       <ul>
-        <li class="layout-aside-submenu">
+        <li class="layout-aside-submenu" v-for="(item,index) of menuData">
           <div class="layout-aside-item-content">
-            <span>按钮</span>
-            <em>button</em>
-          </div>
-        </li>
-        <li class="layout-aside-submenu">
-          <div class="layout-aside-item-content">
-            <span>button</span>
-          </div>
-        </li>
-        <li class="layout-aside-submenu">
-          <div class="layout-aside-item-content">
-            <span>button</span>
+            <div class="layout-aside-item-areas">
+              <span>{{ item.chinese }}</span>
+              <em>{{ item.name }}</em>
+            </div>
           </div>
         </li>
       </ul>
@@ -25,15 +17,16 @@
 </template>
 
 <script lang="ts">
+import {reactive} from 'vue'
+import component from '../../../components.json'
 export default {
   name: "rootLeft",
   setup(){
-    const menuData = []
-    fetch('../../../components.json').then((res)=>{
-      res.json().then((menuData)=>{
-        console.log(menuData);
-      })
-    })
+    let menuData = reactive<Array<object>>([]);
+    menuData = [...component]
+    return{
+      menuData
+    }
   }
 }
 </script>

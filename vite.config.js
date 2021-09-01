@@ -1,25 +1,30 @@
 import vitePlugin from './build/vite-plugin'
 import { defineConfig } from 'vite'
+
 const path = require('path')
 
 module.exports = defineConfig({
     plugins: vitePlugin(),
     optimizeDeps: {
         entries: 'examples',
-        exclude:[
+        exclude: [
             "./src/styles"
         ]
     },
-    resolve: {
-        alias:
-            process.env.NODE_ENV !== 'production'
-                ? [
-                    {
-                        find: 'naive-ui',
-                        replacement: path.resolve(__dirname, './src')
-                    }
-                ]
-                : undefined
+    build: {
+        lib: {
+            entry: path.resolve(__dirname, 'lib/main.js'),
+            name: 'lui',
+            fileName: (format) => `lui.${ format }.js`
+        },
+        rollupOptions: {
+            external: ['vue'],
+            output: {
+                globals: {
+                    vue: 'vue'
+                }
+            }
+        }
     },
     ssr: true,
 })

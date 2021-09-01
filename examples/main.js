@@ -4,12 +4,10 @@ import './styles/index.scss'
 import '../lib/styles/index.css'
 import crateRoute from './routes'
 
-
 import lui from '../src/index'
 // import { lContextMenu } from '../src/index'
 
 const Vue = createApp(App);
-
 const router = crateRoute(Vue, [])
 Vue.use(router)
 

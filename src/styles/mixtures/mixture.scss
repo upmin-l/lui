@@ -34,7 +34,7 @@ $l: '';
 @mixin modifier($modifier) {
   $currentSelector: ".";
   @each $item in $modifier {
-    $currentSelector: #{$currentSelector +$prefixName+ $modifier-separator+$item }
+    $currentSelector: #{$currentSelector +$prefixName+ $modifier-separator+$item}
   }
   @at-root {
     #{$currentSelector} {

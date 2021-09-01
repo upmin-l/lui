@@ -5,8 +5,15 @@
       <div class="layout">
         <root-left></root-left>
         <div>
+          <l-button theme="success" @click="handledButtonClick">确定</l-button>
+          <l-dialog v-model:visible="dialog" :headerIcon="['iconfont icon-d','#f60']" title="创建组件">
+            <l-button theme="success">确定</l-button>
+            <l-button theme="primary">确定</l-button>
+            <l-button theme="subordination">确定</l-button>
+            <l-button theme="error">确定</l-button>
+            <l-button theme="warning">确定</l-button>
+          </l-dialog>
           <router-view></router-view>
-            <l-context-menu :data="menuData.data" @item-click="handledContextClick"></l-context-menu>
         </div>
       </div>
     </div>
@@ -57,13 +64,14 @@
   <!--        <l-button theme="subordination">确定</l-button>-->
   <!--      </l-tab-item>-->
   <!--    </l-tabs>-->
-  <!--    <l-dialog v-model:visible="dialog" :headerIcon="['iconfont icon-d','#f60']" title="创建组件">-->
-  <!--      <l-button theme="success">确定</l-button>-->
-  <!--      <l-button theme="primary">确定</l-button>-->
-  <!--      <l-button theme="subordination">确定</l-button>-->
-  <!--      <l-button theme="error">确定</l-button>-->
-  <!--      <l-button theme="warning">确定</l-button>-->
-  <!--    </l-dialog>-->
+<!--  <l-button theme="success" @click="handledButtonClick">确定</l-button>-->
+<!--  <l-dialog v-model:visible="dialog" :headerIcon="['iconfont icon-d','#f60']" title="创建组件">-->
+<!--        <l-button theme="success">确定</l-button>-->
+<!--        <l-button theme="primary">确定</l-button>-->
+<!--        <l-button theme="subordination">确定</l-button>-->
+<!--        <l-button theme="error">确定</l-button>-->
+<!--        <l-button theme="warning">确定</l-button>-->
+<!--      </l-dialog>-->
   <!--    <div ref="box">12312</div>-->
   <!--    <l-alert theme="error" closable showIcon icon="icon-bianji1" rear-content="知道了"-->
   <!--             @close="handledTabsClick">-->
@@ -115,6 +123,8 @@
 <script>
 import rootLeft from "./views/site/rootLeft.vue";
 import rootHeader from "./views/site/rootHeader.vue";
+import { ref } from "vue";
+import { d } from "../dist/assets/vendor.2d78ca7b";
 
 export default {
   name: 'App',
@@ -131,7 +141,7 @@ export default {
           icon: '',
           children: [
             {
-              name: '你好',
+              name: '发发发发发',
               id: '55',
               children: [
                 {
@@ -167,15 +177,19 @@ export default {
         }
       ]
     }
-
+    let dialog = ref(false)
     function handledContextClick(e, val) {
       console.log(e);
       console.log(val);
     }
-
+    const handledButtonClick = ()=>{
+      dialog.value = !dialog.value
+    }
     return {
       menuData,
-      handledContextClick
+      handledContextClick,
+      handledButtonClick,
+      dialog
     }
   }
 }

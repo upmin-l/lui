@@ -3,6 +3,13 @@ $component_menu: 270px;
 $borderColor: #efeff5;
 $-Primary-: #009af3;
 $-default-: #3f51b5;
+$-succeed-: #19be6b;
+$-subordination-: #3f51b5;
+$-error-: #ED213A;
+$-warning-: #ffb400;
+$-black-: #1e1e1e;
+$-dark-: #314158;
+$-default-font-: #7f8280;
 @function vh($px) {
   @return ($px / $vw_unit) * 100vh;
 }

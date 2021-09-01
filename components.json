@@ -1,14 +1,42 @@
-{
-  "button": "src/packages/button/index.js",
-  "dialog": "src/packages/dialog/index.js",
-  "tabs": "src/packages/tabs/index.js",
-  "tabItem": "src/packages/tabitem/index.js",
-  "switch": "src/packages/switch/index.js",
-  "radio": "src/packages/radio/index.js",
-  "alert": "src/packages/alert/index.js",
-  "option": "src/packages/option/index.js",
-  "select": "src/packages/select/index.js",
-  "loading": "src/packages/loading/index.js",
-  "input": "src/packages/input/index.js",
-  "contextMenu": "src/packages/contextMenu/index,js"
-}
+[
+  {
+    "name": "button",
+    "chinese": "按钮"
+  },
+  {
+    "name": "dialog",
+    "chinese": "对话框"
+  },
+  {
+    "name": "tabs",
+    "chinese": "标签选项卡"
+  },
+  {
+    "name": "switch",
+    "chinese": "开关"
+  },
+  {
+    "name": "radio",
+    "chinese": "开关"
+  },
+  {
+    "name": "alert",
+    "chinese": "弹窗"
+  },
+  {
+    "name": "select",
+    "chinese": "选择器"
+  },
+  {
+    "name": "loading",
+    "chinese": "加载"
+  },
+  {
+    "name": "input",
+    "chinese": "输入框"
+  },
+  {
+    "name": "contextMenu",
+    "chinese": "右键菜单"
+  }
+]

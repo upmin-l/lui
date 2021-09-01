@@ -2,11 +2,9 @@
 import lButton from '../src/packages/button/index.js';
 import lDialog from '../src/packages/dialog/index.js';
 import lTabs from '../src/packages/tabs/index.js';
-import lTabItem from '../src/packages/tabItem/index.js';
 import lSwitch from '../src/packages/switch/index.js';
 import lRadio from '../src/packages/radio/index.js';
 import lAlert from '../src/packages/alert/index.js';
-import lOption from '../src/packages/option/index.js';
 import lSelect from '../src/packages/select/index.js';
 import lLoading from '../src/packages/loading/index.js';
 import lInput from '../src/packages/input/index.js';
@@ -15,11 +13,9 @@ const components = [
     lButton,
 lDialog,
 lTabs,
-lTabItem,
 lSwitch,
 lRadio,
 lAlert,
-lOption,
 lSelect,
 lLoading,
 lInput,
@@ -44,11 +40,9 @@ export{
   lButton,
 lDialog,
 lTabs,
-lTabItem,
 lSwitch,
 lRadio,
 lAlert,
-lOption,
 lSelect,
 lLoading,
 lInput,
