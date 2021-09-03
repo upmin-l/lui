@@ -8,7 +8,8 @@ module.exports = defineConfig({
     optimizeDeps: {
         entries: 'examples',
         exclude: [
-            "./src/styles"
+            "./src/styles",
+            "./build"
         ]
     },
     build: {

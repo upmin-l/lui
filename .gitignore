@@ -3,5 +3,5 @@ node_modules
 .idea
 dist
 lib
-/src/index.js
+src/index.js
 *.local

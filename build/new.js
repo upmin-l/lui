@@ -118,7 +118,6 @@ function disposeComponentPath({workFile,chinese}) {
                     return
                 }
                 const reversalData = JSON.parse(data);
-                console.log(reversalData);
                 reversalData.push({
                     name:workFile,
                     chinese,
@@ -151,17 +150,17 @@ start().then((data) => {
 })
 
 // fn()
-
-function fn() {
-    inquirer.prompt([
-        {
-            type: 'confirm',
-            name: 'is',
-            default: false,
-            message: '是否更新到路由'
-        }
-    ]).then((data) => {
-        console.log(__dirname);
-        console.log(data);
-    })
-}
+//
+// function fn() {
+//     inquirer.prompt([
+//         {
+//             type: 'confirm',
+//             name: 'is',
+//             default: false,
+//             message: '是否更新到路由'
+//         }
+//     ]).then((data) => {
+//         console.log(__dirname);
+//         console.log(data);
+//     })
+// }

@@ -6,7 +6,7 @@ import crateRoute from './routes'
 
 import lui from '../src/index'
 // import { lContextMenu } from '../src/index'
-
+//ROUTES FILE
 const Vue = createApp(App);
 const router = crateRoute(Vue, [])
 Vue.use(router)

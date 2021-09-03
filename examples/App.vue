@@ -1,20 +1,23 @@
 <template>
-  <div style="position: absolute;left: 0;top: 0;bottom: 0;right: 0">
+  <div style="position: absolute;inset: 0">
     <root-header></root-header>
-    <div style="position: absolute;left: 0;top: 52px;bottom: 0;right: 0">
+    <div style="position: absolute;inset: 52px 0 0">
       <div class="layout">
         <root-left></root-left>
         <div>
           <l-button theme="success" @click="handledButtonClick">确定</l-button>
-          <l-dialog v-model:visible="dialog" :headerIcon="['iconfont icon-d','#f60']" title="创建组件">
-            <l-button theme="success">确定</l-button>
-            <l-button theme="primary">确定</l-button>
-            <l-button theme="subordination">确定</l-button>
-            <l-button theme="error">确定</l-button>
-            <l-button theme="warning">确定</l-button>
-          </l-dialog>
           <router-view></router-view>
         </div>
+<!--        <div>-->
+<!--          <l-button theme="success" @click="handledButtonClick">确定</l-button>-->
+<!--          <l-dialog v-model:visible="dialog" :headerIcon="['iconfont icon-d','#f60']" title="创建组件">-->
+<!--            <l-button theme="success">确定</l-button>-->
+<!--            <l-button theme="primary">确定</l-button>-->
+<!--            <l-button theme="subordination">确定</l-button>-->
+<!--            <l-button theme="error">确定</l-button>-->
+<!--            <l-button theme="warning">确定</l-button>-->
+<!--          </l-dialog>-->
+<!--        </div>-->
       </div>
     </div>
   </div>

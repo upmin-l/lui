@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const fs = require('fs')
 const path = require('path')
 
 class CreateRoutes {
@@ -8,7 +8,6 @@ class CreateRoutes {
     }
 
     init() {
-
         switch (process.env.NODE_ENV) {
             case "development":
                 console.log(process.env.NODE_ENV);
@@ -23,7 +22,14 @@ class CreateRoutes {
 
     processStart(is_dev = true) {
         if (is_dev) {
-
+            const componentPath = path.resolve(__dirname, '..', 'src/packages/');
+            fs.readdirSync(componentPath).forEach((item) => {
+                const url = path.resolve(componentPath, item);
+                const state = fs.statSync(url);
+                if (state.isDirectory()) {
+                    console.log(item);
+                }
+            })
         }
     }
 }
