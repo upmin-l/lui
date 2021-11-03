@@ -133,7 +133,7 @@ function disposeComponentPath({workFile,chinese}) {
                 })
             })
         } catch (err) {
-            console.log(chalk.redBright('》》 生成组件路径失败！'))
+            console.log(chalk.redBright('》》生成组件路径失败！'))
             reject(err)
         }
 
