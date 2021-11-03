@@ -19,8 +19,8 @@
 
 <script lang="ts">
 
+
 import {defineComponent, onMounted, ref, watchEffect} from "vue"
-import tabItem from "../../tabItem/src/tabItem.vue";
 
 export default defineComponent(
     {
@@ -33,18 +33,23 @@ export default defineComponent(
         value: [String, Number],
         theme: {
           type: String,
-          default: 'top'
+          default: ''
+        },
+        position:{
+          type:String,
+          default:'top'
         },
         width: {
           type: String,
-          default:'500px'
+          default: '100%'
         },
         height: {
-          type:String,
-          default:'200px'
+          type: String,
+          default: '200px'
         },
-        navBarColor:{
-          type:[],
+        navBarColor: {
+          type: Array,
+          default:()=>[]
         }
       },
       setup(props: any, context: any) {
@@ -61,7 +66,7 @@ export default defineComponent(
           throw new Error('the "data" must be an array of length greater than 1')
         }
         defaults.map((v:any) => {
-          if (v.type !== tabItem) {
+          if (v.type !== 'l-tab-item') {
             throw new Error('parse component failed, "tabs" component expect "<l-tab-item>"')
           }
           //todo 需要判断不传入参数的情况
@@ -74,7 +79,9 @@ export default defineComponent(
         onMounted(() => {
           watchEffect(() => {
             const {width, left: divScreenItemLeft} = selectedItem.value.getBoundingClientRect();
-            const {left: navBoxLeft} = navBox.value.getBoundingClientRect();
+            const {left: navBoxLeft,height} = navBox.value.getBoundingClientRect();
+            console.log(props.position);
+
             indicator.value.style.width = width + 'px'
             indicator.value.style.left = divScreenItemLeft - navBoxLeft + 'px'
           })
