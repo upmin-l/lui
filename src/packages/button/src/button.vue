@@ -39,7 +39,7 @@ export default defineComponent(
           }
         })
         const is_disabled = computed(() => {
-          return !!props.disabled
+          return props.disabled
         })
         const is_size = computed(() => {
           const is_sizeRes = ['bin', 'mini'].find(item => props.size === item)

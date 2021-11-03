@@ -2,23 +2,7 @@
   <div style="position: absolute;inset: 0">
     <root-header></root-header>
     <div style="position: absolute;inset: 52px 0 0">
-      <div class="layout">
-        <root-left></root-left>
-        <div>
-          <l-button theme="success" @click="handledButtonClick">确定</l-button>
-          <router-view></router-view>
-        </div>
-<!--        <div>-->
-<!--          <l-button theme="success" @click="handledButtonClick">确定</l-button>-->
-<!--          <l-dialog v-model:visible="dialog" :headerIcon="['iconfont icon-d','#f60']" title="创建组件">-->
-<!--            <l-button theme="success">确定</l-button>-->
-<!--            <l-button theme="primary">确定</l-button>-->
-<!--            <l-button theme="subordination">确定</l-button>-->
-<!--            <l-button theme="error">确定</l-button>-->
-<!--            <l-button theme="warning">确定</l-button>-->
-<!--          </l-dialog>-->
-<!--        </div>-->
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 
@@ -123,77 +107,77 @@
   <!--  </div>-->
   <!--  <l-loading content-text="正在加载"></l-loading>-->
 </template>
-<script>
-import rootLeft from "./views/site/rootLeft.vue";
+<script setup>
 import rootHeader from "./views/site/rootHeader.vue";
 import { ref } from "vue";
-import { d } from "../dist/assets/vendor.2d78ca7b";
+import {useRouter} from 'vue-router'
 
-export default {
-  name: 'App',
-  components: {
-    rootLeft,
-    rootHeader
-  },
-  setup() {
-    let menuData = {
-      data: [
-        {
-          name: '前端',
-          id: '12',
-          icon: '',
-          children: [
-            {
-              name: '发发发发发',
-              id: '55',
-              children: [
-                {
-                  name: '翻译下',
-                  id: '66'
-                },
-                {
-                  name: '不翻译',
-                  id: '66'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: 'javascript',
-          id: '2',
-          icon: '',
-          children: [
-            {
-              name: 'vue3 集合',
-              id: '33'
-            }
-          ]
-        },
-        {
-          name: 'scss',
-          id: '2'
-        },
-        {
-          name: '查看网页源代码(N)',
-          id: '4'
-        }
-      ]
-    }
-    let dialog = ref(false)
-    function handledContextClick(e, val) {
-      console.log(e);
-      console.log(val);
-    }
-    const handledButtonClick = ()=>{
-      dialog.value = !dialog.value
-    }
-    return {
-      menuData,
-      handledContextClick,
-      handledButtonClick,
-      dialog
-    }
-  }
-}
+// export default {
+//   name: 'App',
+//   components: {
+//     rootHeader
+//   },
+  // setup() {
+  //   let menuData = {
+  //     data: [
+  //       {
+  //         name: '前端',
+  //         id: '12',
+  //         icon: '',
+  //         children: [
+  //           {
+  //             name: '发发发发发',
+  //             id: '55',
+  //             children: [
+  //               {
+  //                 name: '翻译下',
+  //                 id: '66'
+  //               },
+  //               {
+  //                 name: '不翻译',
+  //                 id: '66'
+  //               }
+  //             ]
+  //           }
+  //         ]
+  //       },
+  //       {
+  //         name: 'javascript',
+  //         id: '2',
+  //         icon: '',
+  //         children: [
+  //           {
+  //             name: 'vue3 集合',
+  //             id: '33'
+  //           }
+  //         ]
+  //       },
+  //       {
+  //         name: 'scss',
+  //         id: '2'
+  //       },
+  //       {
+  //         name: '查看网页源代码(N)',
+  //         id: '4'
+  //       }
+  //     ]
+  //   }
+  //   let dialog = ref(false)
+  //   function handledContextClick(e, val) {
+  //     console.log(e);
+  //     console.log(val);
+  //   }
+  //   const handledButtonClick = ()=>{
+  //     dialog.value = !dialog.value
+  //   }
+  //   let route = useRouter();
+  //   route.push('/home')
+  //   return {
+  //     menuData,
+  //     handledContextClick,
+  //     handledButtonClick,
+  //     dialog
+  //   }
+  // }
+// }
 </script>
