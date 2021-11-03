@@ -74,6 +74,23 @@
   }
 }
 
+
+
+.example-content{
+  display: grid;
+  grid-template-columns: 85% auto;
+  padding: 20px;
+}
+
+.example-content-code{
+  position: relative;
+  .example-content-handle{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

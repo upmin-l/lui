@@ -5,6 +5,11 @@ const path = require('path')
 
 module.exports = defineConfig({
     plugins: vitePlugin(),
+    resolve:{
+        alias:{
+            '@':path.resolve(__dirname,'src')
+        }
+    },
     optimizeDeps: {
         entries: 'examples',
         exclude: [
