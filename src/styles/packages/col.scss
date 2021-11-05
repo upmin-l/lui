@@ -1,0 +1,17 @@
+@import "../constant/const";
+@import "../constant/commonality";
+.l-col{
+  min-height: 2px;
+}
+
+@for $i from 1 through 24{
+  .l-col-span#{$element-separator}#{$i}{
+    width: 100%/24*$i;
+  }
+}
+
+@for $i from 1 through 24{
+  .l-col-offset#{$element-separator}#{$i}{
+    margin-left: 100%/24*$i;
+  }
+}

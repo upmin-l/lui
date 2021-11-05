@@ -32,10 +32,9 @@
 <script lang="ts">
 import rootLeft from "./rootLeft.vue";
 import {defineComponent,ref} from 'vue'
-import { lTabs,lButton } from '../../../src/index'
 export default defineComponent({
   name: "home",
-  components: {rootLeft,lTabs,lButton},
+  components: {rootLeft},
   setup() {
     const activeName = ref('1')
     const handledTabsClick = (val)=>{

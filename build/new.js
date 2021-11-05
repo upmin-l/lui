@@ -47,13 +47,11 @@ function crateComponent() {
                         console.log(chalk.red('>> 此组件已经存在'))
                     } else {
                         await disposeComponentPath({workFile,chinese}).then(async start => {
-                            return
                             if (start) {
                                 const file = path.resolve(__dirname, '../', `src/packages/${ workFile }`);
                                 fs.mkdirSync(file)
                                 let src = fs.mkdirSync(file + '\\' + 'src', {recursive: true})
                                 const disposeTemplateRes = disposeTemplate(workFile, 'js')
-
                                 console.log(chalk.greenBright(`>> 创建入口文件`))
                                 console.log(chalk.greenBright(`>> 写入模板`))
                                 await new Promise(resolve => {

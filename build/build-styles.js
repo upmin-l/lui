@@ -39,14 +39,15 @@ function is_watch() {
 
 //todo gulp不支持ts？？？？
 function buildSegregateCss() {
-    Object.keys(components).forEach(compName => {
-        src(`../src/styles/packages/${compName}.scss`)
+    components.forEach(compName=>{
+        console.log(chalk.green(`${compName.name}.css`))
+        src(`../src/styles/packages/${compName.name}.scss`)
             .pipe(sass.sync())
             .pipe(autoPreFixer({
                 Browserslist: ['last 2 versions', 'ie>9']
             }))
             // .pipe(cssMin())
-            .pipe(rename(`${compName}.css`))
+            .pipe(rename(`${compName.name}.css`))
             .pipe(dest('../lib/styles'));
     })
 }

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const renderString = require('json-templater/string');
 
-const MAIN_TEMPLATE=`
+const MAIN_TEMPLATE = `
 export const zhComponentRoutes = [
     {{componentsPath}}
 ];
@@ -25,6 +25,19 @@ path: '{{path}}',
 component: () => import('{{component}}')
 }`
 
+const DEBUG_TEMPLATE = `
+export const routes = [
+    {
+        path: '/',
+        redirect: 'debug'
+    },
+    {
+        name: 'debug',
+        path: '/debug',
+        component: () => import('../views/debug/debugComponent.vue')
+    }
+]`
+
 
 class CreateRoutes {
     constructor() {
@@ -46,6 +59,8 @@ class CreateRoutes {
     }
 
     processStart(is_dev = true) {
+        const routePath = path.resolve(__dirname, '../examples/routes/route.js')
+        let template = null
         if (is_dev) {
             const componentPath = path.resolve(__dirname, '../src/packages/');
             let componentsPath = []
@@ -59,18 +74,19 @@ class CreateRoutes {
                     }))
                 }
             })
-            const routePath = path.resolve(__dirname, '../examples/routes/route.js')
-            const template = renderString(MAIN_TEMPLATE, {
+            template = renderString(MAIN_TEMPLATE, {
                 componentsPath: componentsPath.join(',')
             })
-            fs.writeFile(routePath, template, (err) => {
-                if (err) {
-                    console.log(err)
-                    return
-                }
-                console.log('ok')
-            })
+        } else {
+            template = DEBUG_TEMPLATE
         }
+        fs.writeFile(routePath, template, (err) => {
+            if (err) {
+                console.log(err)
+                return
+            }
+            console.log('ok')
+        })
     }
 }
 

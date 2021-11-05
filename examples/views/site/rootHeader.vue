@@ -17,14 +17,9 @@
 
 <script>
 import { ref } from 'vue'
-// import '../../../lib/styles/button.css'
-import { lButton } from '../../../src/index'
 
 export default {
   name: "rootHeader",
-  components: {
-    lButton
-  },
   setup() {
     let activeName = ref('2');
     const handledTabsClick = (val, name) => {

@@ -109,8 +109,7 @@
 </template>
 <script setup>
 import rootHeader from "./views/site/rootHeader.vue";
-import { ref } from "vue";
-import {useRouter} from 'vue-router'
+
 
 // export default {
 //   name: 'App',

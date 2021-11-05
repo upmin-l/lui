@@ -4,4 +4,6 @@ node_modules
 dist
 lib
 src/index.js
+yarn-error.log
+examples/routes/route.js
 *.local

@@ -24,8 +24,8 @@
     "new": "node build/new.js",
     "build:style": "rimraf lib/styles && gulp --gulpfile build/build-styles.js",
     "build:entry": "node build/build-entry-file.js",
-    "build:test": "cross-env NODE_ENV=development node build/createRoutes.js",
-    "build:bug": "cross-env NODE_ENV=bug node build/createRoutes.js"
+    "dev:test": "cross-env NODE_ENV=development node build/createRoutes.js",
+    "dev:bug": "cross-env NODE_ENV=bug node build/createRoutes.js && vite"
   },
   "dependencies": {
     "highlight.js": "^11.1.0",
