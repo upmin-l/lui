@@ -29,7 +29,6 @@ export default {
     const router = useRouter();
     const methods = {
       handleMenuClick(item) {
-
         router.push(`/home/${item.name}`)
       }
     }

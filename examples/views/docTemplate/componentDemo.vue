@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
 
     <div class="is_title">
       <slot name="title"></slot>
@@ -9,21 +9,26 @@
       <slot name="content"/>
     </div>
     <div class="is_demo">
-      <div>
-        <div class="example-content-demo">
-          <slot name="demo"/>
-        </div>
-      </div>
-      <div class="example-content-code">
-        <pre class="html"><code>{{ sfcCode }}</code> </pre>
-        <div class="example-content-handle">
-          <span class="iconfont icon-icon_expandlistcopy"></span>
-          <span></span>
-          <span></span>
-        </div>
+      <l-row>
+        <l-col class="example-demo-box" :span="12">
+          <div class="example-content-demo">
+            <slot name="demo"/>
+          </div>
+          <div>123</div>
+        </l-col>
+        <l-col  class="example-code-box" :span="12">
+          <div class="example-content-code">
+            <pre class="html"><code>{{ sfcCode }}</code> </pre>
+          </div>
+        </l-col>
+      </l-row>
+      <div class="example-content-handle">
+        <span class="iconfont icon-icon_expandlistcopy"></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
-  </section>
+  </div>
 
 </template>
 
@@ -33,7 +38,7 @@ import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript';
 import xml from 'highlight.js/lib/languages/xml'
 import css from 'highlight.js/lib/languages/css'
-import 'highlight.js/styles/lightfair.css'
+import 'highlight.js/styles/color-brewer.css'
 
 export default {
   name: "componentDemo",

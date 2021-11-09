@@ -20,6 +20,15 @@
       <div class="content">哈哈哈</div>
     </l-col>
   </l-row>
+
+  <l-row :gutter="10" class="box">
+    <l-col span="12">
+      <div class="content">哈哈哈</div>
+    </l-col>
+    <l-col span="12">
+      <div class="content">哈哈哈</div>
+    </l-col>
+  </l-row>
 </template>
 
 <script>

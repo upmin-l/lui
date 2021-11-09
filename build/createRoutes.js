@@ -60,7 +60,7 @@ class CreateRoutes {
 
     processStart(is_dev = true) {
         const routePath = path.resolve(__dirname, '../examples/routes/route.js')
-        let template = null
+        let template
         if (is_dev) {
             const componentPath = path.resolve(__dirname, '../src/packages/');
             let componentsPath = []
@@ -68,10 +68,12 @@ class CreateRoutes {
                 const url = path.resolve(componentPath, item);
                 const state = fs.statSync(url);
                 if (state.isDirectory()) {
-                    componentsPath.push(renderString(ROUTE_PATH, {
-                        path: item,
-                        component: `../demo/${ item }/index.entry.md`
-                    }))
+                    if (!['col', 'row'].includes(item)){
+                        componentsPath.push(renderString(ROUTE_PATH, {
+                            path: item,
+                            component: `../demo/${ item }/index.entry.md`
+                        }))
+                    }
                 }
             })
             template = renderString(MAIN_TEMPLATE, {

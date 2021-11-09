@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './styles/index.scss'
 import '../lib/styles/index.css'
+import './styles/index.scss'
 import crateRoute from './routes'
 
 import lui from '../src/index'
