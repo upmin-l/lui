@@ -11,7 +11,7 @@ export default defineComponent({
   name: "lCol",
   props: {
     span: {
-      type: Number,
+      type: [Number, String],
       default: 24
     },
     offset: {

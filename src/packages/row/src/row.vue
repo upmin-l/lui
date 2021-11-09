@@ -47,6 +47,7 @@ export default {
 <style lang="scss">
 .l-row {
   display: flex;
+  height: 100%;
   flex-flow: row wrap;
 }
 </style>
