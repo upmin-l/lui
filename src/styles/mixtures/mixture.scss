@@ -1,5 +1,6 @@
 @import "../constant/commonality";
 @import "./animation";
+@import "../constant/const";
 
 $l: '';
 /* BEM 命名*/
@@ -40,6 +41,11 @@ $l: '';
     #{$currentSelector} {
       @content
     }
+  }
+}
+@each $i in $theme{
+  @include modifier($i){
+    background-color: map-get($themeValue,$i);
   }
 }
 

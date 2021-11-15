@@ -2,6 +2,17 @@
 
 @import "./rootHeader";
 
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  box-sizing: border-box;
+  code{
+    font-family: Consolas,Menlo,Courier,monospace;
+  }
+}
+
 .layout {
   display: grid;
   height: 100%;
@@ -81,9 +92,7 @@
   padding: 20px;
 }
 
-.example-demo-box {
-  border-right: 1px solid #eaeaea;
-}
+
 
 .example-code-box {
   overflow-y: scroll;
@@ -100,9 +109,11 @@
       font-family: Menlo, Monaco, Consolas, Courier, monospace !important;
     }
   }
-
 }
 
+.example-card{
+  margin-top: 50px;
+}
 // doc  下面
 .doc {
   h2 {
@@ -132,15 +143,26 @@
     right: 10px;
     top: 2px;
   }
+  .example-demo-box {
+    padding: 0 10px;
+    border-right: 1px solid #eaeaea;
+  }
+  .example-component-desc{
+    margin-top: 30px;
+  }
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  box-sizing: border-box;
+
+.des-box{
+  p{
+    padding: 20px;
+  }
+  code{
+    color: #ff9e00;
+  }
 }
+
+
 
 ::-webkit-scrollbar {
   width: 6px;

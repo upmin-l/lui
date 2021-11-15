@@ -11,6 +11,9 @@ $-dark-: #314158;
 $-default-font-: #7f8280;
 $-font-size-default: 14px !default;
 
+$theme: default, primary, success, subordination, error, warning, black, dark;
+$themeValue: (default:#eaeaea, primary:$-Primary-, success:$-succeed-, subordination:$-subordination-, error:$-error-, warning:$-warning-,black:$-black-,dark:$-dark-);
+
 
 /*button 状态 颜色*/
 $-button-default-color: $-default-;
