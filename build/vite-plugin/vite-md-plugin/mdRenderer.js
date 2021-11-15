@@ -6,7 +6,6 @@ function codeRenderer() {
     const overrides = {
         //头部
         heading: (text, level) => {
-            const id = text.replace(/ /g, '-');
             return `<h${ level }>${ text }</h${ level }>\n`
         },
         //段落

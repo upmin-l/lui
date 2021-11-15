@@ -1,34 +1,15 @@
 <template>
-  <l-row :gutter="20" class="box">
-    <l-col offset="2" :span="8">
-      <div class="content">哈哈哈</div>
-    </l-col>
-    <l-col offset="2" :span="12">
-      <div class="content">哈哈哈</div>
-    </l-col>
-  </l-row>
-
-
-  <l-row :gutter="40" class="box">
-    <l-col :span="12">
-      <div class="content">哈哈哈</div>
-    </l-col>
-    <l-col offset="2" :span="3">
-      <div class="content">哈哈哈</div>
-    </l-col>
-    <l-col :span="6">
-      <div class="content">哈哈哈</div>
-    </l-col>
-  </l-row>
-
-  <l-row :gutter="10" class="box">
-    <l-col span="12">
-      <div class="content">哈哈哈</div>
-    </l-col>
-    <l-col span="12">
-      <div class="content">哈哈哈</div>
-    </l-col>
-  </l-row>
+  <hr style="border-style: dashed">
+  <l-divider theme="success" position="left">123</l-divider>
+  <l-divider theme="dark" position="center">自满</l-divider>
+  <l-divider theme="warning" position="left">自负</l-divider>
+  <l-divider theme="subordination" position="right">自立自主</l-divider>
+  <l-divider theme="error"  position="left">
+    <div>456</div>
+  </l-divider>
+  <l-divider theme="primary"  position="left">
+    优雅，永不过时
+  </l-divider>
 </template>
 
 <script>
