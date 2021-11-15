@@ -14,6 +14,9 @@
     <template #demo>
       <!--DEMO_SLOT-->
     </template>
+    <template #des>
+      <!--DES_SLOT-->
+    </template>
   </component-demo>
 </template>
 

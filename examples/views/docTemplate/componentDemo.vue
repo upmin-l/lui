@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div class="example-card">
     <div class="is_title">
       <slot name="title"></slot>
     </div>
@@ -14,7 +13,9 @@
           <div class="example-content-demo">
             <slot name="demo"/>
           </div>
-          <div>123</div>
+          <div class="example-component-desc">
+            <slot name="des"/>
+          </div>
         </l-col>
         <l-col  class="example-code-box" :span="12">
           <div class="example-content-code">

@@ -12,13 +12,9 @@ module.exports = async function docLoader(content, pathSrc) {
 }
 
 async function convertMdDoc(text, url, env = 'development') {
-    const colSpan = ~ text.search('<!--single-column-->') ? 1 : 2
     const forceShowAnchor = !!~ text.search('<!--anchor:on-->')
     const tokens = marked.lexer(text);
 
-    const titleIndex = tokens.findIndex(
-        (token) => token.type === 'heading' && token.depth === 2
-    )
     //处理 md 的demo
     const demosIndex = tokens.findIndex(
         (token) => token.type === 'code' && token.lang === 'demo'

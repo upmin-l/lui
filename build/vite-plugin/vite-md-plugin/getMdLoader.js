@@ -25,7 +25,7 @@ function analysisMd(content, {resourcePath, relativeUrl}) {
 }
 
 function analysisTransform(tokens) {
-    let template, style, title, script;
+    let template, style, title, script,des;
     const contentTokens = []
     contentTokens.links = tokens.links;
     for (const key of tokens) {
@@ -38,6 +38,13 @@ function analysisTransform(tokens) {
                 if (key.lang === 'template' || key.lang === 'html') template = key.text;
                 if (key.lang === 'style' || key.lang === 'css') style = key.text
                 break;
+            case 'html':
+                if (key.text.includes('des-box')){
+                    des = key.text
+                }else {
+                    contentTokens.push(key)
+                }
+                break;
             default:
                 contentTokens.push(key)
         }
@@ -47,6 +54,7 @@ function analysisTransform(tokens) {
         style,
         script,
         title,
+        des,
         content: marked.parser(contentTokens, {
             renderer: mdRenderer
         })
@@ -102,5 +110,6 @@ function genVueComponent(parts, fileName, relativeUrl) {
     if (parts.script) src = src.replace(/<!--SCRIPT_SLOT-->/, `<script setup>${ parts.script }</script>`)
     if (parts.style) src = src.replace(/<!--STYLE_SLOT-->/, parts.style)
     if (parts.template) src = src.replace(/<!--DEMO_SLOT-->/, parts.template)
+    if (parts.des) src = src.replace(/<!--DES_SLOT-->/, parts.des)
     return src.trim()
 }
