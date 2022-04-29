@@ -1,7 +1,7 @@
 <template>
   <aside class="layout-aside">
     <div class="layout-container">
-      <span class="item-group-title">通用法师法师</span>
+<!--      <span class="item-group-title">通用法师法师</span>-->
       <ul>
         <li class="layout-aside-submenu" v-for="(item,index) of menuData" @click="handleMenuClick(item)">
           <div class="layout-aside-item-content">
@@ -26,6 +26,7 @@ export default {
   setup() {
     let menuData = reactive<Array<object>>([]);
     menuData = [...component]
+    console.log(menuData);
     const router = useRouter();
     const methods = {
       handleMenuClick(item) {

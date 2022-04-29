@@ -9,6 +9,9 @@ import lSelect from '../src/packages/select/index.js';
 import lLoading from '../src/packages/loading/index.js';
 import lInput from '../src/packages/input/index.js';
 import lContextMenu from '../src/packages/contextMenu/index.js';
+import lRow from '../src/packages/row/index.js';
+import lCol from '../src/packages/col/index.js';
+import lDivider from '../src/packages/divider/index.js';
 const components = [
     lButton,
 lDialog,
@@ -19,7 +22,10 @@ lAlert,
 lSelect,
 lLoading,
 lInput,
-lContextMenu
+lContextMenu,
+lRow,
+lCol,
+lDivider
 ]
 const install = function (Vue) {
     components.map(v => {
@@ -46,6 +52,9 @@ lAlert,
 lSelect,
 lLoading,
 lInput,
-lContextMenu
+lContextMenu,
+lRow,
+lCol,
+lDivider
 }
 export default lUi

@@ -2,7 +2,8 @@
 
 ```demo
 basics
-button
+gradual
+forbidden
 ```
 
 

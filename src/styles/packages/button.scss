@@ -14,7 +14,7 @@
   margin-left: 10px;
   font-size: 14px;
   border-radius: 4px;
-  border: 1px solid $-color-info;
+  border: none;
   font-weight: 500;
   color: $-default-font-;
   //transform: translate(0px, 0px);
@@ -34,15 +34,17 @@
 }
 
 @include button-theme(default) {
+  border: 1px solid $-color-info;
+  //@include button-state($-button-default-font-color,$-button-default-background-color,$-button-default-border-color,$-hover-color-button,$-active-color-button)
   &:active {
-    background-color: transparent;
+    background-color: rgba(96, 188 ,244,.1);
     color: $-button-Primary-color;
     border-color: $-button-Primary-color;
     border-spacing: 3px;
   }
   &:focus {
     color: $-button-Primary-color;
-    background-color: transparent;
+    background-color: rgba(96, 188 ,244,.1);
     border-color: $-button-Primary-color;
   }
 }

@@ -1,3 +1,4 @@
+$animations: fadeInLeft, fadeOutLeft,fadeIn;
 
 @keyframes after-scale {
   to {
@@ -39,16 +40,18 @@
     opacity: 0;
   }
 }
+
 @keyframes rotate {
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes bounce {
-  0%,100%{
+  0%, 100% {
     transform: scale(.2);
   }
-  50%{
+  50% {
     transform: scale(1);
   }
 }
@@ -63,6 +66,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes loader-inner {
   0% {
     transform: rotate(0deg);
@@ -71,5 +75,55 @@
     transform: rotate(-360deg);
   }
 }
+
 ////loading end
+
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(30%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@each $animation in $animations {
+  .#{$animation} {
+    -webkit-animation-name: $animation;
+    animation-name: $animation;
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 

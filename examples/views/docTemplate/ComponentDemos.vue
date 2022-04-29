@@ -7,7 +7,6 @@
 export default {
   name: "ComponentDemos",
   setup(props, ctx) {
-    console.log({...ctx.slots.default()});
   }
 }
 </script>

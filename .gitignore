@@ -6,4 +6,5 @@ lib
 src/index.js
 yarn-error.log
 examples/routes/route.js
+/components.json
 *.local

@@ -66,7 +66,8 @@ export default defineComponent(
           throw new Error('the "data" must be an array of length greater than 1')
         }
         defaults.map((v:any) => {
-          if (v.type.name !== 'lTabItem') {
+          console.log(v.type);
+          if (v.type !== 'l-tab-item') {
             throw new Error('parse component failed, "tabs" component expect "<l-tab-item>"')
           }
           //todo 需要判断不传入参数的情况

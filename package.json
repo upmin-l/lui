@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "lui:init": "yarn || npm i",
-    "start": "npm run dev",
+    "start": "vite",
     "dev": "cross-env NODE_ENV=development node build/createRoutes.js && vite",
     "build": "vite build",
     "clean:bag": "rimraf lib",

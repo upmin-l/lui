@@ -94,10 +94,9 @@ ${ parts.style }
 }
 
 function getFileName(resourcePath) {
-    //resourcePath  //E:/test/maker-test/src/demo/button.demo.md
-    const dirs = resourcePath.split('/') //[ 'E:', 'test', 'maker-test', 'src', 'demo', 'button.demo.md' ]
-    const fileNameWithExtension = dirs[dirs.length - 1] //button.demo.md
-    return [fileNameWithExtension.split('.')[0], fileNameWithExtension] //[ 'button', 'button.demo.md' ]
+    const dirs = resourcePath.split('/') //[ 'E:', 'test', 'maker-test', 'src', 'demo', 'basics.demo.md' ]
+    const fileNameWithExtension = dirs[dirs.length - 1] //basics.demo.md
+    return [fileNameWithExtension.split('.')[0], fileNameWithExtension] //[ 'button', 'basics.demo.md' ]
 }
 
 function genVueComponent(parts, fileName, relativeUrl) {

@@ -12,7 +12,7 @@ module.exports = async function docLoader(content, pathSrc) {
 }
 
 async function convertMdDoc(text, url, env = 'development') {
-    const forceShowAnchor = !!~ text.search('<!--anchor:on-->')
+    const forceShowAnchor = !!~text.search('<!--anchor:on-->')
     const tokens = marked.lexer(text);
 
     //处理 md 的demo
@@ -21,7 +21,7 @@ async function convertMdDoc(text, url, env = 'development') {
     )
     // 处理右侧 导航标题
     let demoInfos = []
-    if (~ demosIndex) {
+    if (~demosIndex) {
         demoInfos = await resolveDemoInfos(tokens[demosIndex].text, url, env)
         tokens.splice(demosIndex, 1, {
             type: 'html',
@@ -35,16 +35,20 @@ async function convertMdDoc(text, url, env = 'development') {
     })
     const docTemplate = `
             <template>
-              <div class="doc" >
-               ${ docMainTemplate }
-              </div>
-              <div class="catalogue-box"></div>
+                <transition enter-active-class="animated fadeIn"
+                            leave-active-class="animated fadeOutLeft"
+                             mode="out-in"
+                             appear>
+                     <article class="doc" >
+                        ${docMainTemplate}
+                     </article>
+                  </transition>
             </template>`
 
     // 处理 script
     const components = [];
     const docScript = await createScript(demoInfos, components, url, forceShowAnchor)
-    return `${ docTemplate }\n\n${ docScript }`
+    return `${docTemplate}\n\n${docScript}`
 }
 
 async function resolveDemoInfos(literal, url, env) {
@@ -58,14 +62,14 @@ async function resolveDemoInfos(literal, url, env) {
         if (env === 'production' && debug) {
             continue
         }
-        const fileName = `${ id }.demo.md`
-        const variable = `${ camelCase(id) }Demo`
+        const fileName = `${id}.demo.md`
+        const variable = `${camelCase(id)}Demo`
         infos.push({
             id,
             variable,
             fileName,
             title: await resolveDemoTitle(fileName, url),
-            tag: `<${ variable } />`,
+            tag: `<${variable} />`,
             debug
         })
     }
@@ -83,7 +87,7 @@ async function resolveDemoTitle(fileName, demoEntryPath) {
 
 function createDemosTemplate(demoInfos) {
     return `<component-demos>
-                ${ demoInfos.map(({tag}) => tag).join('\n') }
+                ${demoInfos.map(({tag}) => tag).join('\n')}
             </component-demos>`
 }
 
@@ -91,9 +95,9 @@ function createDemosTemplate(demoInfos) {
 async function createScript(demoInfos, components = [], url, forceShowAnchor) {
 
     // 处理合并 components
-    const importRes = demoInfos.map(({variable, fileName}) => `import ${ variable } from './${ fileName }'`)
+    const importRes = demoInfos.map(({variable, fileName}) => `import ${variable} from './${fileName}'`)
         .concat(components.map(
-            (component) => `import ${ camelCase(component) } from './${ component }'`
+            (component) => `import ${camelCase(component)} from './${component}'`
         ))
         .join('\n');
     // 处理组件注册名
@@ -103,10 +107,10 @@ async function createScript(demoInfos, components = [], url, forceShowAnchor) {
         .join(',\n')
 
     return `<script >
-             ${ importRes }
+             ${importRes}
              export  default {
                    components: {
-                    ${ componentStmts }
+                    ${componentStmts}
                   },
              }
 </script>`
