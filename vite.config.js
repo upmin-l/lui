@@ -1,10 +1,10 @@
 import vitePlugin from './build/vite-plugin'
 import { defineConfig } from 'vite'
-
+import defineOptions from 'unplugin-vue-define-options/vite'
 const path = require('path')
 
 module.exports = defineConfig({
-    plugins: vitePlugin(),
+    plugins: [...vitePlugin(),defineOptions()],
     resolve:{
         alias:{
             '@':path.resolve(__dirname,'src')
