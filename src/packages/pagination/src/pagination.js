@@ -7,18 +7,19 @@ export const usePagination = (props, emit) => {
     const layoutComponent = {prev, pager, next};
     const currentPage = ref(Number(props.pageNum)); //当前激活的页码
     const currentPageSize = ref(Number(props.pageSize)); //每页显示的条数
-    const total = ref(0); //总页数
+    const total = ref(Number(props.total)); //总页数
 
 
     const setCurrentPage = (type, pageNum = 1, isEmit = true) => {
         let num = currentPage.value;
         type === "prev" ? num-- : type === "next" ? num++ : (num = Number(pageNum));
-
-        // 限制页码的边界值，最小为 1，最大不超过总页数
+        if (num===currentPage.value)return
         currentPage.value = num < 1 ? 1 : num > total.value ? total.value : num;
-        if (currentPage.value !== props.pageNum && isEmit) {
-            emit("page-change", currentPage.value);
-        }
+        emit("page-change", currentPage.value);
+        // currentPage.value = num < 1 ? 1 : num > total.value ? total.value : num;
+        // if (currentPage.value !== props.pageNum && isEmit) {
+        //     emit("page-change", currentPage.value);
+        // }
     };
     watchEffect(() => {
         // 根据传入的 total 计算总页数

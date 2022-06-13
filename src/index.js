@@ -12,6 +12,7 @@ import lContextMenu from '../src/packages/contextMenu/index.js';
 import lRow from '../src/packages/row/index.js';
 import lCol from '../src/packages/col/index.js';
 import lDivider from '../src/packages/divider/index.js';
+import lPagination from '../src/packages/pagination/index.js';
 const components = [
     lButton,
 lDialog,
@@ -25,7 +26,8 @@ lInput,
 lContextMenu,
 lRow,
 lCol,
-lDivider
+lDivider,
+lPagination
 ]
 const install = function (Vue) {
     components.map(v => {
@@ -55,6 +57,7 @@ lInput,
 lContextMenu,
 lRow,
 lCol,
-lDivider
+lDivider,
+lPagination
 }
 export default lUi
